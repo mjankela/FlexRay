@@ -1,0 +1,179 @@
+[Version]
+DLLVer=02.5009.00.1
+PRJVer=1
+
+[PRJKIND]
+mode=1
+
+[CPUTYPE]
+CpuSerise=911
+
+[PrjInfo]
+Count=1
+PrjInfo-0=Debug
+Active=Debug
+
+[MEMBER]
+F0=12
+F1=0 f Source Files
+F2=0 c IO_MB91465X_V01L03\_fr.c
+F3=0 c src\dux_adc.c
+F4=0 c src\dux_flexray.c
+F5=0 c interrupt\dux_interrupts.c
+F6=0 c src\dux_ports.c
+F7=0 c src\dux_uart.c
+F8=0 c src\dux_watchdog.c
+F9=0 c src\main.c
+F10=0 a src\startup.asm
+F11=0 c interrupt\vect.c
+F12=0 f Include Files
+
+[OPTIONFILE]
+FILE=flexray_startup.dat
+
+[CPUTYPE-Debug]
+CsvFile=Lib\911\911.csv
+CpuName=MB91F465X
+Count=0
+
+[DirInfo-Debug]
+CONFIG=Debug\
+OBJ=Debug\OBJ\
+LST=Debug\LST\
+OPT=Debug\OPT\
+
+[MEMBER-Debug]
+F0=11
+F1=0 m 1 Debug\ABS\flexray_startup.abs
+F2=3 a 1 src\startup.asm
+F2-1=- h_file\system.h
+F2-2=- IO_MB91465X_V01L03\_fr.h
+F2-3=- IO_MB91465X_V01L03\mb91f465x_a.inc
+F3=10 c 1 src\main.c
+F3-1=- IO_MB91465X_V01L03\_fr.h
+F3-2=- IO_MB91465X_V01L03\mb91f465x.h
+F3-3=- h_file\dux_platform_types.h
+F3-4=- h_file\dux_flexray.h
+F3-5=- h_file\dux_uart.h
+F3-6=- h_file\dux_ports.h
+F3-7=- h_file\dux_adc.h
+F3-8=- h_file\dux_watchdog.h
+F3-9=- h_file\dux_version.h
+F3-10=- interrupt\dux_interrupts.h
+F4=2 c 1 IO_MB91465X_V01L03\_fr.c
+F4-1=- IO_MB91465X_V01L03\_fr.h
+F4-2=- IO_MB91465X_V01L03\mb91f465x.h
+F5=10 c 1 src\dux_uart.c
+F5-1=- h_file\dux_uart.h
+F5-2=- h_file\dux_platform_types.h
+F5-3=- h_file\FLX_regist_defines.h
+F5-4=- IO_MB91465X_V01L03\_fr.h
+F5-5=- IO_MB91465X_V01L03\mb91f465x.h
+F5-6=- h_file\dux_watchdog.h
+F5-7=- C:\Softune6\LIB\911\INCLUDE\stdio.h
+F5-8=- C:\Softune6\LIB\911\INCLUDE\stddef.h
+F5-9=- C:\Softune6\LIB\911\INCLUDE\stdarg.h
+F5-10=- C:\Softune6\LIB\911\INCLUDE\string.h
+F6=8 c 1 src\dux_flexray.c
+F6-1=- IO_MB91465X_V01L03\_fr.h
+F6-2=- IO_MB91465X_V01L03\mb91f465x.h
+F6-3=- h_file\FLX_regist_defines.h
+F6-4=- h_file\dux_platform_types.h
+F6-5=- h_file\dux_flexray.h
+F6-6=- h_file\dux_watchdog.h
+F6-7=- clusterconfig\DUXFlexRayClusterConfig.h
+F6-8=- interrupt\dux_interrupts.h
+F7=4 c 1 src\dux_watchdog.c
+F7-1=- h_file\dux_watchdog.h
+F7-2=- h_file\dux_platform_types.h
+F7-3=- IO_MB91465X_V01L03\_fr.h
+F7-4=- IO_MB91465X_V01L03\mb91f465x.h
+F8=5 c 1 src\dux_adc.c
+F8-1=- h_file\dux_adc.h
+F8-2=- h_file\dux_platform_types.h
+F8-3=- h_file\FLX_regist_defines.h
+F8-4=- IO_MB91465X_V01L03\_fr.h
+F8-5=- IO_MB91465X_V01L03\mb91f465x.h
+F9=5 c 1 src\dux_ports.c
+F9-1=- h_file\dux_ports.h
+F9-2=- h_file\dux_platform_types.h
+F9-3=- h_file\FLX_regist_defines.h
+F9-4=- IO_MB91465X_V01L03\_fr.h
+F9-5=- IO_MB91465X_V01L03\mb91f465x.h
+F10=4 c 1 interrupt\vect.c
+F10-1=- IO_MB91465X_V01L03\_fr.h
+F10-2=- IO_MB91465X_V01L03\mb91f465x.h
+F10-3=- interrupt\dux_interrupts.h
+F10-4=- h_file\system.h
+F11=10 c 1 interrupt\dux_interrupts.c
+F11-1=- IO_MB91465X_V01L03\_fr.h
+F11-2=- IO_MB91465X_V01L03\mb91f465x.h
+F11-3=- interrupt\dux_interrupts.h
+F11-4=- h_file\FLX_regist_defines.h
+F11-5=- h_file\dux_platform_types.h
+F11-6=- h_file\dux_flexray.h
+F11-7=- h_file\dux_uart.h
+F11-8=- h_file\dux_watchdog.h
+F11-9=- C:\Softune6\LIB\911\INCLUDE\string.h
+F11-10=- C:\Softune6\LIB\911\INCLUDE\stddef.h
+
+[BUILDMODE-Debug]
+kernel=1
+
+[RUNSET-Debug]
+CONVERT=1
+CONVERTKIND=0
+
+[DebState-Debug]
+SupCount=2
+Supfile-0=Debug\node1.sup
+Supfile-1=Debug\node2.sup
+Current=node2.sup
+AliasFile=
+CPURunMode=
+
+[AsmBefore]
+Count=0
+
+[AsmAfter]
+Count=0
+
+[CcBefore]
+Count=0
+
+[CcAfter]
+Count=0
+
+[LnkBefore]
+Count=0
+
+[LnkAfter]
+Count=0
+
+[LibBefore]
+Count=0
+
+[LibAfter]
+Count=0
+
+[CnvBefore]
+Count=0
+
+[CnvAfter]
+Count=1
+T0-Title=M2BS.EXE
+T0-ExeName=C:\Softune6\Bin\M2BS.EXE
+T0-Option=%X.mhx -o %X.bin -ran 0x00080000, 0x00084FFF
+T0-Directory=%x\Debug\ABS
+T0-Disable=0
+T0-AddOptDialog=0
+T0-AddOption=
+T0-UseOutput=1
+T0-FileDataCount=0
+
+[ConfigBefore]
+Count=0
+
+[ConfigAfter]
+Count=0
+

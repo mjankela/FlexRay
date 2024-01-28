@@ -1,0 +1,2150 @@
+                                                           +----------------+
+                                                           |IO91F465X-V01L03|
+                                                           +----------------+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                           SAMPLE I/O REGISTER FILES
+                      FOR FR FAMILY MB91F465X SERIES
+
+                                 USERS MANUAL
+
+                      FUJITSU MICROELECTRONICS LIMITED
+
+                                    V01L03
+
+Preface
+
+  The sample I/O register files for MB91F465X series declares and defines
+  symbols, thereby enabling the I/O registers
+  of the FR family to be handled as Asembler symbols.
+  This manual describes the configuration of the I/O register files,
+  symbol declaration and definition.
+
+
+
+
+Items to note before using I/O register files
+
+  - The I/O register files are intended for specific series of
+    FR family.
+    Before applying these programs to any other series of MB91F465X series,
+    therefore, be sure to modify the I/O register files.
+
+  - When a program for I/O register operation is coded, the I/O register
+    access sequence and timing must be considered. Please refer to the
+    related hardware manuals.
+
+  - The I/O register files are provided as valuable aids in developing the
+    application programs for MB91F465X series. In practice, however,
+    some of these programs may need be modified depending on the
+    target system. Before using any of them, therefore, be sure to verify
+    the actual operation of the program.
+
+  - FUJITSU MICROELECTRONICS may assume no liability for errors in the I/O
+    register files and no responsibility for correcting errors immediately
+    even if they are found.
+
+Reference manuals
+
+  I/O register files for MB91F465X series (V01L03) are made based on the
+  following manuals.
+
+    - MB91F465XA preliminary datasheet(ds91F465XA-v0.12.pdf)
+
+Contents
+
+CHAPTER 1  CONFIGURATION OF I/O REGISTER FILES
+
+CHAPTER 2  USAGE OF I/O REGISTER FILES
+
+CHAPTER 3  DECLARATION OF I/O REGISTER DECLARATION FILES
+
+CHAPTER 4  SYMBOL AND MACRO NAMES USED IN I/O REGISTER DECLARATION FILES
+           FOR MB91F465X SERIES
+
+CHAPTER 1  CONFIGURATION OF I/O REGISTER FILES
+
+ ${FETOOL}             (Directory set in environment variable FETOOL)
+  +-lib
+    +-911
+      +-include
+        +-sample
+          +-MB91F465X
+            +-_fr.h (I/O register declaration file)
+            |
+            +-mb91f465x.h (I/O register declaration file for MB91F465X series)
+            |
+            +-_fr_a.asm (I/O register definition file)
+
+  - I/O register declaration file
+
+    This file declares all the associated I/O register symbols (symbols
+    corresponding to I/O registers).
+    Please include this file when coding a program that handles associated
+    I/O registers.
+
+  - I/O register declaration file for MB91F465X series
+
+    This file declares all the structure types corresponding to I/O registers
+    for MB91F465X series.
+
+  - I/O register definition file for each I/O register
+
+    This file defines each the associated I/O register symbol and specifies
+    arrangement address.
+
+CHAPTER 2  USAGE OF I/O REGISTER FILES
+
+  (1) Please assemble the I/O register definition file with the CPU option
+      of using MB number.
+        example:  > fasm911s -cpu mb***** _fr_a.asm
+
+  (2) When you describe the application program which refers to the I/O
+      registers, please include the I/O register declaration file.
+
+        example:  #include "_fr.h"
+
+                         .....
+                    LDI:32  #_IO_PDR2, R4
+                         .....
+
+  (3) Please assemble the application program file with the CPU option of
+      using MB number.
+
+        example:  > fasm911s -cpu mb***** sample.asm
+
+        Note: When the MB number of the specified CPU option cannot be used
+              for the I/O register file, the following messages are output.
+
+                #error "The I/O register file of the specified CPU option
+                        does not exist"
+
+  (4) Please link the I/O register definition object file and the application
+      program object file.
+
+        example: > flnk911s -cpu mb***** -o sample.abs *.obj
+
+CHAPTER 3  DECLARATION OF I/O REGISTER DECLARATION FILES
+
+  Each I/O register declaration file declares the symbols corresponding to
+  I/O register names as follows:
+
+  Note: FR/FRex family assembler cannot access for bit type.
+
+    - The I/O register symbols that must be accessed in 1, 2 or 4 bytes
+      are declared in byte type.
+
+    - Basically, each symbol name is declared in the form of the
+      corresponding I/O  register name plus '_IO_'.
+      (However, for access convenience, two or more I/O registers may be
+       declared by one symbol name.)
+
+
+  [Example]  Declaration for I/O register PDR0
+
+    - I/O register structure
+
+          7       6       5       4       3       2       1       0    bit No.
+      +-------+-------+-------+-------+-------+-------+-------+-------+
+      |   P07 |   P06 |   P05 |   P04 |   P03 |   P02 |   P01 |   P00 | PDR0
+      +-------+-------+-------+-------+-------+-------+-------+-------+
+
+    - Contents of declaration
+
+        #ifdef __IO_DEFINE
+                .SECTION  IO_PDR0,IO,LOCATE=0x0
+        _IO_PDR0:
+        __pdr0: .res.b 0
+        PDR0 .equ 0x00000000
+        #endif
+                .GLOBAL _IO_PDR0, __pdr0, PDR0
+
+CHAPTER 4  SYMBOL AND MACRO NAMES USED IN I/O REGISTER DECLARATION FILES
+           FOR MB91F465X SERIES
+
+  I/O Register Name : PDR14                   Address : 0xe
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PDR14                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : PDR15                   Address : 0xf
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PDR15                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : PDR16                   Address : 0x10
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PDR16                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : PDR17                   Address : 0x11
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PDR17                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : PDR18                   Address : 0x12
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PDR18                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : PDR19                   Address : 0x13
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PDR19                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : PDR22                   Address : 0x16
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PDR22                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : PDR23                   Address : 0x17
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PDR23                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : PDR24                   Address : 0x18
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PDR24                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : PDR27                   Address : 0x1b
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PDR27                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : PDR28                   Address : 0x1c
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PDR28                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : PDR29                   Address : 0x1d
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PDR29                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : PDR31                   Address : 0x1f
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PDR31                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : EIRR0                   Address : 0x30
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_EIRR0                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : ENIR0                   Address : 0x31
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_ENIR0                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : ELVR0                   Address : 0x32-0x33
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_ELVR0                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : EIRR1                   Address : 0x34
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_EIRR1                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : ENIR1                   Address : 0x35
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_ENIR1                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : ELVR1                   Address : 0x36-0x37
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_ELVR1                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : DICR                    Address : 0x38
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_DICR                                                  
+----------------------------------------------------------------------------
+
+  I/O Register Name : HRCL                    Address : 0x39
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_HRCL                                                  
+----------------------------------------------------------------------------
+
+  I/O Register Name : RBSYNC                  Address : 0x40-0x41
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_RBSYNC                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : SCR04                   Address : 0x60
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_SCR04                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : SMR04                   Address : 0x61
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_SMR04                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : SSR04                   Address : 0x62
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_SSR04                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : RDR04                   Address : 0x63
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_RDR04                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : ESCR04                  Address : 0x64
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_ESCR04                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : ECCR04                  Address : 0x65
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_ECCR04                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : FSR04                   Address : 0x66
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_FSR04                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : FCR04                   Address : 0x67
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_FCR04                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : SCR06                   Address : 0x70
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_SCR06                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : SMR06                   Address : 0x71
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_SMR06                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : SSR06                   Address : 0x72
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_SSR06                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : RDR06                   Address : 0x73
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_RDR06                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : ESCR06                  Address : 0x74
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_ESCR06                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : ECCR06                  Address : 0x75
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_ECCR06                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : FSR06                   Address : 0x76
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_FSR06                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : FCR06                   Address : 0x77
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_FCR06                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : SCR07                   Address : 0x78
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_SCR07                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : SMR07                   Address : 0x79
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_SMR07                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : SSR07                   Address : 0x7a
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_SSR07                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : RDR07                   Address : 0x7b
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_RDR07                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : ESCR07                  Address : 0x7c
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_ESCR07                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : ECCR07                  Address : 0x7d
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_ECCR07                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : FSR07                   Address : 0x7e
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_FSR07                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : FCR07                   Address : 0x7f
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_FCR07                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : BGR04                   Address : 0x88-0x89
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_BGR04
+  Byte/Word       _IO_BGR104                                       
+  Byte/Word       _IO_BGR004                                       
+----------------------------------------------------------------------------
+
+  I/O Register Name : BGR06                   Address : 0x8c-0x8d
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_BGR06
+  Byte/Word       _IO_BGR106                                       
+  Byte/Word       _IO_BGR006                                       
+----------------------------------------------------------------------------
+
+  I/O Register Name : BGR07                   Address : 0x8e-0x8f
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_BGR07
+  Byte/Word       _IO_BGR107                                       
+  Byte/Word       _IO_BGR007                                       
+----------------------------------------------------------------------------
+
+  I/O Register Name : IIC0                    Address : 0xd0-0xdb
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_IIC0_IO_IBCR0                                         
+  Byte/Word       _IO_IIC0_IO_IBSR0                                         
+  Byte/Word       _IO_IIC0_IO_ITBA0                                         
+  Byte/Word       _IO_IIC0_IO_ITMK0                                         
+  Byte/Word       _IO_IIC0_IO_ISMK0                                         
+  Byte/Word       _IO_IIC0_IO_ISBA0                                         
+  Byte/Word       _IO_IIC0_IO_IDAR0                                         
+  Byte/Word       _IO_IIC0_IO_ICCR0                                         
+----------------------------------------------------------------------------
+
+  I/O Register Name : GCN10                   Address : 0x100-0x101
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_GCN10                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : GCN20                   Address : 0x103
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_GCN20                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : GCN11                   Address : 0x104-0x105
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_GCN11                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : GCN21                   Address : 0x107
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_GCN21                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : GCN12                   Address : 0x108-0x109
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_GCN12                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : GCN22                   Address : 0x10b
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_GCN22                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : PTMR00                  Address : 0x110-0x111
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PTMR00                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PCSR00                  Address : 0x112-0x113
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PCSR00                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PDUT00                  Address : 0x114-0x115
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PDUT00                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PCN00                   Address : 0x116-0x117
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PCN00                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : PTMR01                  Address : 0x118-0x119
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PTMR01                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PCSR01                  Address : 0x11a-0x11b
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PCSR01                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PDUT01                  Address : 0x11c-0x11d
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PDUT01                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PCN01                   Address : 0x11e-0x11f
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PCN01                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : PTMR02                  Address : 0x120-0x121
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PTMR02                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PCSR02                  Address : 0x122-0x123
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PCSR02                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PDUT02                  Address : 0x124-0x125
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PDUT02                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PCN02                   Address : 0x126-0x127
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PCN02                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : PTMR03                  Address : 0x128-0x129
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PTMR03                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PCSR03                  Address : 0x12a-0x12b
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PCSR03                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PDUT03                  Address : 0x12c-0x12d
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PDUT03                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PCN03                   Address : 0x12e-0x12f
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PCN03                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : PTMR04                  Address : 0x130-0x131
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PTMR04                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PCSR04                  Address : 0x132-0x133
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PCSR04                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PDUT04                  Address : 0x134-0x135
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PDUT04                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PCN04                   Address : 0x136-0x137
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PCN04                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : PTMR05                  Address : 0x138-0x139
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PTMR05                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PCSR05                  Address : 0x13a-0x13b
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PCSR05                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PDUT05                  Address : 0x13c-0x13d
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PDUT05                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PCN05                   Address : 0x13e-0x13f
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PCN05                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : PTMR06                  Address : 0x140-0x141
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PTMR06                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PCSR06                  Address : 0x142-0x143
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PCSR06                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PDUT06                  Address : 0x144-0x145
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PDUT06                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PCN06                   Address : 0x146-0x147
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PCN06                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : PTMR07                  Address : 0x148-0x149
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PTMR07                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PCSR07                  Address : 0x14a-0x14b
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PCSR07                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PDUT07                  Address : 0x14c-0x14d
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PDUT07                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PCN07                   Address : 0x14e-0x14f
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PCN07                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : PTMR08                  Address : 0x150-0x151
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PTMR08                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PCSR08                  Address : 0x152-0x153
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PCSR08                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PDUT08                  Address : 0x154-0x155
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PDUT08                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PCN08                   Address : 0x156-0x157
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PCN08                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : PTMR09                  Address : 0x158-0x159
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PTMR09                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PCSR09                  Address : 0x15a-0x15b
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PCSR09                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PDUT09                  Address : 0x15c-0x15d
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PDUT09                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PCN09                   Address : 0x15e-0x15f
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PCN09                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : PTMR10                  Address : 0x160-0x161
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PTMR10                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PCSR10                  Address : 0x162-0x163
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PCSR10                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PDUT10                  Address : 0x164-0x165
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PDUT10                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PCN10                   Address : 0x166-0x167
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PCN10                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : PTMR11                  Address : 0x168-0x169
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PTMR11                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PCSR11                  Address : 0x16a-0x16b
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PCSR11                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PDUT11                  Address : 0x16c-0x16d
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PDUT11                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : PCN11                   Address : 0x16e-0x16f
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PCN11                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : ICS01                   Address : 0x181
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_ICS01                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : ICS23                   Address : 0x183
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_ICS23                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : IPCP0                   Address : 0x184-0x185
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_IPCP0                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : IPCP1                   Address : 0x186-0x187
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_IPCP1                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : IPCP2                   Address : 0x188-0x189
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_IPCP2                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : IPCP3                   Address : 0x18a-0x18b
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_IPCP3                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : OCS01                   Address : 0x18c-0x18d
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_OCS01                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : OCS23                   Address : 0x18e-0x18f
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_OCS23                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : OCCP0                   Address : 0x190-0x191
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_OCCP0                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : OCCP1                   Address : 0x192-0x193
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_OCCP1                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : OCCP2                   Address : 0x194-0x195
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_OCCP2                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : OCCP3                   Address : 0x196-0x197
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_OCCP3                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : AD                      Address : 0x1a0-0x1ab
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_AD_IO_ADER                                            
+  Byte/Word       _IO_AD_IO_ADCS1                                           
+  Byte/Word       _IO_AD_IO_ADCS0                                           
+  Byte/Word       _IO_AD_IO_ADCR01                                          
+  Byte/Word       _IO_AD_IO_ADCT01                                          
+  Byte/Word       _IO_AD_IO_ADSCH                                           
+  Byte/Word       _IO_AD_IO_ADECH                                           
+----------------------------------------------------------------------------
+
+  I/O Register Name : TMRLR0                  Address : 0x1b0-0x1b1
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TMRLR0                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : TMR0                    Address : 0x1b2-0x1b3
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TMR0                                                  
+----------------------------------------------------------------------------
+
+  I/O Register Name : TMCSR0                  Address : 0x1b6-0x1b7
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TMCSR0                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : TMRLR1                  Address : 0x1b8-0x1b9
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TMRLR1                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : TMR1                    Address : 0x1ba-0x1bb
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TMR1                                                  
+----------------------------------------------------------------------------
+
+  I/O Register Name : TMCSR1                  Address : 0x1be-0x1bf
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TMCSR1                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : TMRLR2                  Address : 0x1c0-0x1c1
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TMRLR2                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : TMR2                    Address : 0x1c2-0x1c3
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TMR2                                                  
+----------------------------------------------------------------------------
+
+  I/O Register Name : TMCSR2                  Address : 0x1c6-0x1c7
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TMCSR2                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : TMRLR3                  Address : 0x1c8-0x1c9
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TMRLR3                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : TMR3                    Address : 0x1ca-0x1cb
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TMR3                                                  
+----------------------------------------------------------------------------
+
+  I/O Register Name : TMCSR3                  Address : 0x1ce-0x1cf
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TMCSR3                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : TMRLR4                  Address : 0x1d0-0x1d1
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TMRLR4                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : TMR4                    Address : 0x1d2-0x1d3
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TMR4                                                  
+----------------------------------------------------------------------------
+
+  I/O Register Name : TMCSR4                  Address : 0x1d6-0x1d7
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TMCSR4                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : TMRLR5                  Address : 0x1d8-0x1d9
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TMRLR5                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : TMR5                    Address : 0x1da-0x1db
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TMR5                                                  
+----------------------------------------------------------------------------
+
+  I/O Register Name : TMCSR5                  Address : 0x1de-0x1df
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TMCSR5                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : TMRLR6                  Address : 0x1e0-0x1e1
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TMRLR6                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : TMR6                    Address : 0x1e2-0x1e3
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TMR6                                                  
+----------------------------------------------------------------------------
+
+  I/O Register Name : TMCSR6                  Address : 0x1e6-0x1e7
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TMCSR6                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : TMRLR7                  Address : 0x1e8-0x1e9
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TMRLR7                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : TMR7                    Address : 0x1ea-0x1eb
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TMR7                                                  
+----------------------------------------------------------------------------
+
+  I/O Register Name : TMCSR7                  Address : 0x1ee-0x1ef
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TMCSR7                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : TCDT0                   Address : 0x1f0-0x1f1
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TCDT0                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : TCCS0                   Address : 0x1f3
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TCCS0                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : TCDT1                   Address : 0x1f4-0x1f5
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TCDT1                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : TCCS1                   Address : 0x1f7
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TCCS1                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : TCDT2                   Address : 0x1f8-0x1f9
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TCDT2                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : TCCS2                   Address : 0x1fb
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TCCS2                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : TCDT3                   Address : 0x1fc-0x1fd
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TCDT3                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : TCCS3                   Address : 0x1ff
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TCCS3                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : DMACA0                  Address : 0x200-0x203
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_DMACA0                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : DMACB0                  Address : 0x204-0x207
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_DMACB0                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : DMACA1                  Address : 0x208-0x20b
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_DMACA1                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : DMACB1                  Address : 0x20c-0x20f
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_DMACB1                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : DMACA2                  Address : 0x210-0x213
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_DMACA2                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : DMACB2                  Address : 0x214-0x217
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_DMACB2                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : DMACA3                  Address : 0x218-0x21b
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_DMACA3                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : DMACB3                  Address : 0x21c-0x21f
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_DMACB3                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : DMACA4                  Address : 0x220-0x223
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_DMACA4                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : DMACB4                  Address : 0x224-0x227
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_DMACB4                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : DMACR                   Address : 0x240
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_DMACR                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : ICS45                   Address : 0x2d1
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_ICS45                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : ICS67                   Address : 0x2d3
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_ICS67                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : IPCP4                   Address : 0x2d4-0x2d5
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_IPCP4                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : IPCP5                   Address : 0x2d6-0x2d7
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_IPCP5                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : IPCP6                   Address : 0x2d8-0x2d9
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_IPCP6                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : IPCP7                   Address : 0x2da-0x2db
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_IPCP7                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : OCS45                   Address : 0x2dc-0x2dd
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_OCS45                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : OCCP4                   Address : 0x2e0-0x2e1
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_OCCP4                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : OCCP5                   Address : 0x2e2-0x2e3
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_OCCP5                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : TCDT4                   Address : 0x2f0-0x2f1
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TCDT4                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : TCCS4                   Address : 0x2f3
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TCCS4                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : TCDT5                   Address : 0x2f4-0x2f5
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TCDT5                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : TCCS5                   Address : 0x2f7
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TCCS5                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : TCDT6                   Address : 0x2f8-0x2f9
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TCDT6                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : TCCS6                   Address : 0x2fb
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TCCS6                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : TCDT7                   Address : 0x2fc-0x2fd
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TCDT7                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : TCCS7                   Address : 0x2ff
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_TCCS7                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : ROMS                    Address : 0x390-0x391
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_ROMS                                                  
+----------------------------------------------------------------------------
+
+  I/O Register Name : BSD0                    Address : 0x3f0-0x3f3
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_BSD0                                                  
+----------------------------------------------------------------------------
+
+  I/O Register Name : BSD1                    Address : 0x3f4-0x3f7
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_BSD1                                                  
+----------------------------------------------------------------------------
+
+  I/O Register Name : BSDC                    Address : 0x3f8-0x3fb
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_BSDC                                                  
+----------------------------------------------------------------------------
+
+  I/O Register Name : BSRR                    Address : 0x3fc-0x3ff
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_BSRR                                                  
+----------------------------------------------------------------------------
+
+  I/O Register Name : ICR                     Address : 0x440-0x47f
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_ICR_n(n:0 - 63)                                       
+----------------------------------------------------------------------------
+
+  I/O Register Name : CLK                     Address : 0x480-0x487
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_CLK_IO_RSRR                                           
+  Byte/Word       _IO_CLK_IO_STCR                                           
+  Byte/Word       _IO_CLK_IO_TBCR                                           
+  Byte/Word       _IO_CLK_IO_CTBR                                           
+  Byte/Word       _IO_CLK_IO_CLKR                                           
+  Byte/Word       _IO_CLK_IO_WPR                                            
+  Byte/Word       _IO_CLK_IO_DIVR0                                          
+  Byte/Word       _IO_CLK_IO_DIVR1                                          
+----------------------------------------------------------------------------
+
+  I/O Register Name : PLL                     Address : 0x48c-0x493
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PLL_IO_DIVM                                           
+  Byte/Word       _IO_PLL_IO_DIVN                                           
+  Byte/Word       _IO_PLL_IO_DIVG                                           
+  Byte/Word       _IO_PLL_IO_MULG                                           
+  Byte/Word       _IO_PLL_IO_CTRL                                           
+----------------------------------------------------------------------------
+
+  I/O Register Name : OSCC1                   Address : 0x494
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_OSCC1                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : OSCS1                   Address : 0x495
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_OSCS1                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : OSCC2                   Address : 0x496
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_OSCC2                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : OSCS2                   Address : 0x497
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_OSCS2                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : PORTEN                  Address : 0x498
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PORTEN                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : WT                      Address : 0x4a0-0x4ab
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_WT_IO_WTCER                                           
+  Byte/Word       _IO_WT_IO_WTCRH                                           
+  Byte/Word       _IO_WT_IO_WTCRL                                           
+  Byte/Word       _IO_WT_IO_WTBRH                                           
+  Byte/Word       _IO_WT_IO_WTBRM                                           
+  Byte/Word       _IO_WT_IO_WTBRL                                           
+  Byte/Word       _IO_WT_IO_WTHR                                            
+  Byte/Word       _IO_WT_IO_WTMR                                            
+  Byte/Word       _IO_WT_IO_WTSR                                            
+----------------------------------------------------------------------------
+
+  I/O Register Name : CSS                     Address : 0x4ac-0x4af
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_CSS_IO_CSVTR                                          
+  Byte/Word       _IO_CSS_IO_CSVCR                                          
+  Byte/Word       _IO_CSS_IO_CSCFG                                          
+  Byte/Word       _IO_CSS_IO_CMCFG                                          
+----------------------------------------------------------------------------
+
+  I/O Register Name : CUSO                    Address : 0x4b0-0x4b7
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_CUSO_IO_CUCR                                          
+  Byte/Word       _IO_CUSO_IO_CUTD                                          
+  Byte/Word       _IO_CUSO_IO_CUTR1                                         
+  Byte/Word       _IO_CUSO_IO_CUTR2                                         
+----------------------------------------------------------------------------
+
+  I/O Register Name : CM                      Address : 0x4b8-0x4bf
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_CM_IO_CMPR                                            
+  Byte/Word       _IO_CM_IO_CMCR                                            
+  Byte/Word       _IO_CM_IO_CMT1                                            
+  Byte/Word       _IO_CM_IO_CMT2                                            
+----------------------------------------------------------------------------
+
+  I/O Register Name : CANPRE                  Address : 0x4c0
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_CANPRE                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : CANCKD                  Address : 0x4c1
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_CANCKD                                                
+----------------------------------------------------------------------------
+
+  I/O Register Name : LVD                     Address : 0x4c4-0x4c7
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_LVD_IO_LVSEL                                          
+  Byte/Word       _IO_LVD_IO_LVDET                                          
+  Byte/Word       _IO_LVD_IO_HWWDE                                          
+  Byte/Word       _IO_LVD_IO_HWWD                                           
+----------------------------------------------------------------------------
+
+  I/O Register Name : OST                     Address : 0x4c8-0x4cb
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_OST_IO_OSCRH                                          
+  Byte/Word       _IO_OST_IO_WPCRH                                          
+----------------------------------------------------------------------------
+
+  I/O Register Name : OSC                     Address : 0x4cc-0x4cf
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_OSC_IO_OSCCR                                          
+----------------------------------------------------------------------------
+
+  I/O Register Name : PLL2                    Address : 0x4dc-0x4e3
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PLL2_IO_DIVM                                          
+  Byte/Word       _IO_PLL2_IO_DIVN                                          
+  Byte/Word       _IO_PLL2_IO_DIVG                                          
+  Byte/Word       _IO_PLL2_IO_MULG                                          
+  Byte/Word       _IO_PLL2_IO_CTRL                                          
+  Byte/Word       _IO_PLL2_IO_CLKR2                                         
+----------------------------------------------------------------------------
+
+  I/O Register Name : IOS                     Address : 0xc03
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_IOS                                                   
+----------------------------------------------------------------------------
+
+  I/O Register Name : PORT2                   Address : 0xd00-0xf1f
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_PORT2_IO_PDRD14                                       
+  Byte/Word       _IO_PORT2_IO_PDRD15                                       
+  Byte/Word       _IO_PORT2_IO_PDRD16                                       
+  Byte/Word       _IO_PORT2_IO_PDRD17                                       
+  Byte/Word       _IO_PORT2_IO_PDRD18                                       
+  Byte/Word       _IO_PORT2_IO_PDRD19                                       
+  Byte/Word       _IO_PORT2_IO_PDRD22                                       
+  Byte/Word       _IO_PORT2_IO_PDRD23                                       
+  Byte/Word       _IO_PORT2_IO_PDRD24                                       
+  Byte/Word       _IO_PORT2_IO_PDRD27                                       
+  Byte/Word       _IO_PORT2_IO_PDRD28                                       
+  Byte/Word       _IO_PORT2_IO_PDRD29                                       
+  Byte/Word       _IO_PORT2_IO_PDRD31                                       
+  Byte/Word       _IO_PORT2_IO_DDR14                                        
+  Byte/Word       _IO_PORT2_IO_DDR15                                        
+  Byte/Word       _IO_PORT2_IO_DDR16                                        
+  Byte/Word       _IO_PORT2_IO_DDR17                                        
+  Byte/Word       _IO_PORT2_IO_DDR18                                        
+  Byte/Word       _IO_PORT2_IO_DDR19                                        
+  Byte/Word       _IO_PORT2_IO_DDR22                                        
+  Byte/Word       _IO_PORT2_IO_DDR23                                        
+  Byte/Word       _IO_PORT2_IO_DDR24                                        
+  Byte/Word       _IO_PORT2_IO_DDR27                                        
+  Byte/Word       _IO_PORT2_IO_DDR28                                        
+  Byte/Word       _IO_PORT2_IO_DDR29                                        
+  Byte/Word       _IO_PORT2_IO_DDR31                                        
+  Byte/Word       _IO_PORT2_IO_PFR14                                        
+  Byte/Word       _IO_PORT2_IO_PFR15                                        
+  Byte/Word       _IO_PORT2_IO_PFR16                                        
+  Byte/Word       _IO_PORT2_IO_PFR17                                        
+  Byte/Word       _IO_PORT2_IO_PFR18                                        
+  Byte/Word       _IO_PORT2_IO_PFR19                                        
+  Byte/Word       _IO_PORT2_IO_PFR22                                        
+  Byte/Word       _IO_PORT2_IO_PFR23                                        
+  Byte/Word       _IO_PORT2_IO_PFR24                                        
+  Byte/Word       _IO_PORT2_IO_PFR27                                        
+  Byte/Word       _IO_PORT2_IO_PFR28                                        
+  Byte/Word       _IO_PORT2_IO_PFR29                                        
+  Byte/Word       _IO_PORT2_IO_PFR31                                        
+  Byte/Word       _IO_PORT2_IO_EPFR14                                       
+  Byte/Word       _IO_PORT2_IO_EPFR15                                       
+  Byte/Word       _IO_PORT2_IO_EPFR16                                       
+  Byte/Word       _IO_PORT2_IO_EPFR17                                       
+  Byte/Word       _IO_PORT2_IO_EPFR18                                       
+  Byte/Word       _IO_PORT2_IO_EPFR19                                       
+  Byte/Word       _IO_PORT2_IO_EPFR22                                       
+  Byte/Word       _IO_PORT2_IO_EPFR23                                       
+  Byte/Word       _IO_PORT2_IO_EPFR24                                       
+  Byte/Word       _IO_PORT2_IO_EPFR27                                       
+  Byte/Word       _IO_PORT2_IO_EPFR28                                       
+  Byte/Word       _IO_PORT2_IO_EPFR29                                       
+  Byte/Word       _IO_PORT2_IO_EPFR31                                       
+  Byte/Word       _IO_PORT2_IO_PODR14                                       
+  Byte/Word       _IO_PORT2_IO_PODR15                                       
+  Byte/Word       _IO_PORT2_IO_PODR16                                       
+  Byte/Word       _IO_PORT2_IO_PODR17                                       
+  Byte/Word       _IO_PORT2_IO_PODR18                                       
+  Byte/Word       _IO_PORT2_IO_PODR19                                       
+  Byte/Word       _IO_PORT2_IO_PODR22                                       
+  Byte/Word       _IO_PORT2_IO_PODR23                                       
+  Byte/Word       _IO_PORT2_IO_PODR24                                       
+  Byte/Word       _IO_PORT2_IO_PODR27                                       
+  Byte/Word       _IO_PORT2_IO_PODR28                                       
+  Byte/Word       _IO_PORT2_IO_PODR29                                       
+  Byte/Word       _IO_PORT2_IO_PODR31                                       
+  Byte/Word       _IO_PORT2_IO_PILR14                                       
+  Byte/Word       _IO_PORT2_IO_PILR15                                       
+  Byte/Word       _IO_PORT2_IO_PILR16                                       
+  Byte/Word       _IO_PORT2_IO_PILR17                                       
+  Byte/Word       _IO_PORT2_IO_PILR18                                       
+  Byte/Word       _IO_PORT2_IO_PILR19                                       
+  Byte/Word       _IO_PORT2_IO_PILR22                                       
+  Byte/Word       _IO_PORT2_IO_PILR23                                       
+  Byte/Word       _IO_PORT2_IO_PILR24                                       
+  Byte/Word       _IO_PORT2_IO_PILR27                                       
+  Byte/Word       _IO_PORT2_IO_PILR28                                       
+  Byte/Word       _IO_PORT2_IO_PILR29                                       
+  Byte/Word       _IO_PORT2_IO_PILR31                                       
+  Byte/Word       _IO_PORT2_IO_EPILR14                                      
+  Byte/Word       _IO_PORT2_IO_EPILR15                                      
+  Byte/Word       _IO_PORT2_IO_EPILR16                                      
+  Byte/Word       _IO_PORT2_IO_EPILR17                                      
+  Byte/Word       _IO_PORT2_IO_EPILR18                                      
+  Byte/Word       _IO_PORT2_IO_EPILR19                                      
+  Byte/Word       _IO_PORT2_IO_EPILR22                                      
+  Byte/Word       _IO_PORT2_IO_EPILR23                                      
+  Byte/Word       _IO_PORT2_IO_EPILR24                                      
+  Byte/Word       _IO_PORT2_IO_EPILR27                                      
+  Byte/Word       _IO_PORT2_IO_EPILR28                                      
+  Byte/Word       _IO_PORT2_IO_EPILR29                                      
+  Byte/Word       _IO_PORT2_IO_EPILR31                                      
+  Byte/Word       _IO_PORT2_IO_PPER14                                       
+  Byte/Word       _IO_PORT2_IO_PPER15                                       
+  Byte/Word       _IO_PORT2_IO_PPER16                                       
+  Byte/Word       _IO_PORT2_IO_PPER17                                       
+  Byte/Word       _IO_PORT2_IO_PPER18                                       
+  Byte/Word       _IO_PORT2_IO_PPER19                                       
+  Byte/Word       _IO_PORT2_IO_PPER22                                       
+  Byte/Word       _IO_PORT2_IO_PPER23                                       
+  Byte/Word       _IO_PORT2_IO_PPER24                                       
+  Byte/Word       _IO_PORT2_IO_PPER27                                       
+  Byte/Word       _IO_PORT2_IO_PPER28                                       
+  Byte/Word       _IO_PORT2_IO_PPER29                                       
+  Byte/Word       _IO_PORT2_IO_PPER31                                       
+  Byte/Word       _IO_PORT2_IO_PPCR14                                       
+  Byte/Word       _IO_PORT2_IO_PPCR15                                       
+  Byte/Word       _IO_PORT2_IO_PPCR16                                       
+  Byte/Word       _IO_PORT2_IO_PPCR17                                       
+  Byte/Word       _IO_PORT2_IO_PPCR18                                       
+  Byte/Word       _IO_PORT2_IO_PPCR19                                       
+  Byte/Word       _IO_PORT2_IO_PPCR22                                       
+  Byte/Word       _IO_PORT2_IO_PPCR23                                       
+  Byte/Word       _IO_PORT2_IO_PPCR24                                       
+  Byte/Word       _IO_PORT2_IO_PPCR27                                       
+  Byte/Word       _IO_PORT2_IO_PPCR28                                       
+  Byte/Word       _IO_PORT2_IO_PPCR29                                       
+  Byte/Word       _IO_PORT2_IO_PPCR31                                       
+----------------------------------------------------------------------------
+
+  I/O Register Name : DMAD                    Address : 0x1000-0x1027
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_DMAD_IO_DMASA0                                        
+  Byte/Word       _IO_DMAD_IO_DMADA0                                        
+  Byte/Word       _IO_DMAD_IO_DMASA1                                        
+  Byte/Word       _IO_DMAD_IO_DMADA1                                        
+  Byte/Word       _IO_DMAD_IO_DMASA2                                        
+  Byte/Word       _IO_DMAD_IO_DMADA2                                        
+  Byte/Word       _IO_DMAD_IO_DMASA3                                        
+  Byte/Word       _IO_DMAD_IO_DMADA3                                        
+  Byte/Word       _IO_DMAD_IO_DMASA4                                        
+  Byte/Word       _IO_DMAD_IO_DMADA4                                        
+----------------------------------------------------------------------------
+
+  I/O Register Name : FMCS                    Address : 0x7000
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_FMCS                                                  
+----------------------------------------------------------------------------
+
+  I/O Register Name : FMCR                    Address : 0x7001
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_FMCR                                                  
+----------------------------------------------------------------------------
+
+  I/O Register Name : FCHCR                   Address : 0x7002-0x7003
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_FCHCR                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : FMWT                    Address : 0x7004-0x7005
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_FMWT                                                  
+----------------------------------------------------------------------------
+
+  I/O Register Name : FMWT2                   Address : 0x7006
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_FMWT2                                                 
+----------------------------------------------------------------------------
+
+  I/O Register Name : FMPS                    Address : 0x7007
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_FMPS                                                  
+----------------------------------------------------------------------------
+
+  I/O Register Name : FMAC                    Address : 0x7008-0x700b
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_FMAC                                                  
+----------------------------------------------------------------------------
+
+  I/O Register Name : CAN0                    Address : 0xc000-0xc0bf
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_CAN0_IO_CTRLR0                                        
+  Byte/Word       _IO_CAN0_IO_STATR0                                        
+  Byte/Word       _IO_CAN0_IO_ERRCNT0                                       
+  Byte/Word       _IO_CAN0_IO_BTR0                                          
+  Byte/Word       _IO_CAN0_IO_INTR0                                         
+  Byte/Word       _IO_CAN0_IO_TESTR0                                        
+  Byte/Word       _IO_CAN0_IO_BRPER0                                        
+  Byte/Word       _IO_CAN0_IO_IF1CREQ0                                      
+  Byte/Word       _IO_CAN0_IO_IF1CMSK0                                      
+  Byte/Word       _IO_CAN0_IO_IF1MSK0                                       
+  Byte/Word       _IO_CAN0_IO_IF1ARB0                                       
+  Byte/Word       _IO_CAN0_IO_IF1MCTR0                                      
+  Byte/Word       _IO_CAN0_IO_IF1DTA10                                      
+  Byte/Word       _IO_CAN0_IO_IF1DTA20                                      
+  Byte/Word       _IO_CAN0_IO_IF1DTB10                                      
+  Byte/Word       _IO_CAN0_IO_IF1DTB20                                      
+  Byte/Word       _IO_CAN0_IO_IF2CREQ0                                      
+  Byte/Word       _IO_CAN0_IO_IF2CMSK0                                      
+  Byte/Word       _IO_CAN0_IO_IF2MSK0                                       
+  Byte/Word       _IO_CAN0_IO_IF2ARB0                                       
+  Byte/Word       _IO_CAN0_IO_IF2MCTR0                                      
+  Byte/Word       _IO_CAN0_IO_IF2DTA10                                      
+  Byte/Word       _IO_CAN0_IO_IF2DTA20                                      
+  Byte/Word       _IO_CAN0_IO_IF2DTB10                                      
+  Byte/Word       _IO_CAN0_IO_IF2DTB20                                      
+  Byte/Word       _IO_CAN0_IO_TREQR0_12                                     
+  Byte/Word       _IO_CAN0_IO_NEWDT0_12                                     
+  Byte/Word       _IO_CAN0_IO_INTPND0_12                                    
+  Byte/Word       _IO_CAN0_IO_MSGVAL0_12                                    
+----------------------------------------------------------------------------
+
+  I/O Register Name : CAN4                    Address : 0xc400-0xc4bf
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_CAN4_IO_CTRLR4                                        
+  Byte/Word       _IO_CAN4_IO_STATR4                                        
+  Byte/Word       _IO_CAN4_IO_ERRCNT4                                       
+  Byte/Word       _IO_CAN4_IO_BTR4                                          
+  Byte/Word       _IO_CAN4_IO_INTR4                                         
+  Byte/Word       _IO_CAN4_IO_TESTR4                                        
+  Byte/Word       _IO_CAN4_IO_BRPER4                                        
+  Byte/Word       _IO_CAN4_IO_IF1CREQ4                                      
+  Byte/Word       _IO_CAN4_IO_IF1CMSK4                                      
+  Byte/Word       _IO_CAN4_IO_IF1MSK4                                       
+  Byte/Word       _IO_CAN4_IO_IF1ARB4                                       
+  Byte/Word       _IO_CAN4_IO_IF1MCTR4                                      
+  Byte/Word       _IO_CAN4_IO_IF1DTA14                                      
+  Byte/Word       _IO_CAN4_IO_IF1DTA24                                      
+  Byte/Word       _IO_CAN4_IO_IF1DTB14                                      
+  Byte/Word       _IO_CAN4_IO_IF1DTB24                                      
+  Byte/Word       _IO_CAN4_IO_IF2CREQ4                                      
+  Byte/Word       _IO_CAN4_IO_IF2CMSK4                                      
+  Byte/Word       _IO_CAN4_IO_IF2MSK4                                       
+  Byte/Word       _IO_CAN4_IO_IF2ARB4                                       
+  Byte/Word       _IO_CAN4_IO_IF2MCTR4                                      
+  Byte/Word       _IO_CAN4_IO_IF2DTA14                                      
+  Byte/Word       _IO_CAN4_IO_IF2DTA24                                      
+  Byte/Word       _IO_CAN4_IO_IF2DTB14                                      
+  Byte/Word       _IO_CAN4_IO_IF2DTB24                                      
+  Byte/Word       _IO_CAN4_IO_TREQR4_12                                     
+  Byte/Word       _IO_CAN4_IO_NEWDT4_12                                     
+  Byte/Word       _IO_CAN4_IO_INTPND4_12                                    
+  Byte/Word       _IO_CAN4_IO_MSGVAL4_12                                    
+----------------------------------------------------------------------------
+
+  I/O Register Name : FxR_CIF                 Address : 0xd000-0xd007
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_FxR_CIF_IO_CIF0                                       
+  Byte/Word       _IO_FxR_CIF_IO_CIF1                                       
+----------------------------------------------------------------------------
+
+  I/O Register Name : FxR_GIF1                Address : 0xd010-0xd01f
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_FxR_GIF1_IO_TEST1                                     
+  Byte/Word       _IO_FxR_GIF1_IO_TEST2                                     
+  Byte/Word       _IO_FxR_GIF1_IO_LCK                                       
+----------------------------------------------------------------------------
+
+  I/O Register Name : FxR_INT                 Address : 0xd020-0xd053
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_FxR_INT_IO_EIR                                        
+  Byte/Word       _IO_FxR_INT_IO_SIR                                        
+  Byte/Word       _IO_FxR_INT_IO_EILS                                       
+  Byte/Word       _IO_FxR_INT_IO_SILS                                       
+  Byte/Word       _IO_FxR_INT_IO_EIES                                       
+  Byte/Word       _IO_FxR_INT_IO_EIER                                       
+  Byte/Word       _IO_FxR_INT_IO_SIES                                       
+  Byte/Word       _IO_FxR_INT_IO_SIER                                       
+  Byte/Word       _IO_FxR_INT_IO_ILE                                        
+  Byte/Word       _IO_FxR_INT_IO_T0C                                        
+  Byte/Word       _IO_FxR_INT_IO_T1C                                        
+  Byte/Word       _IO_FxR_INT_IO_STPW1                                      
+  Byte/Word       _IO_FxR_INT_IO_STPW2                                      
+----------------------------------------------------------------------------
+
+  I/O Register Name : FxR_SUC1                Address : 0xd080-0xd08b
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_FxR_SUC1_IO_SUCC1                                     
+  Byte/Word       _IO_FxR_SUC1_IO_SUCC2                                     
+  Byte/Word       _IO_FxR_SUC1_IO_SUCC3                                     
+----------------------------------------------------------------------------
+
+  I/O Register Name : FxR_NEMC                Address : 0xd08c-0xd08f
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_FxR_NEMC                                              
+----------------------------------------------------------------------------
+
+  I/O Register Name : FxR_PRT                 Address : 0xd090-0xd097
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_FxR_PRT_IO_PRTC1                                      
+  Byte/Word       _IO_FxR_PRT_IO_PRTC2                                      
+----------------------------------------------------------------------------
+
+  I/O Register Name : FxR_MHDC                Address : 0xd098-0xd09b
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_FxR_MHDC                                              
+----------------------------------------------------------------------------
+
+  I/O Register Name : FxR_GTU1                Address : 0xd0a0-0xd0cb
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_FxR_GTU1_IO_GTUC1                                     
+  Byte/Word       _IO_FxR_GTU1_IO_GTUC2                                     
+  Byte/Word       _IO_FxR_GTU1_IO_GTUC3                                     
+  Byte/Word       _IO_FxR_GTU1_IO_GTUC4                                     
+  Byte/Word       _IO_FxR_GTU1_IO_GTUC5                                     
+  Byte/Word       _IO_FxR_GTU1_IO_GTUC6                                     
+  Byte/Word       _IO_FxR_GTU1_IO_GTUC7                                     
+  Byte/Word       _IO_FxR_GTU1_IO_GTUC8                                     
+  Byte/Word       _IO_FxR_GTU1_IO_GTUC9                                     
+  Byte/Word       _IO_FxR_GTU1_IO_GTUC10                                    
+  Byte/Word       _IO_FxR_GTU1_IO_GTUC11                                    
+----------------------------------------------------------------------------
+
+  I/O Register Name : FxR_SUC2                Address : 0xd100-0xd107
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_FxR_SUC2_IO_CCSV                                      
+  Byte/Word       _IO_FxR_SUC2_IO_CCEV                                      
+----------------------------------------------------------------------------
+
+  I/O Register Name : FxR_GTU2                Address : 0xd110-0xd1ab
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_FxR_GTU2_IO_SCV                                       
+  Byte/Word       _IO_FxR_GTU2_IO_MTCCV                                     
+  Byte/Word       _IO_FxR_GTU2_IO_RCV                                       
+  Byte/Word       _IO_FxR_GTU2_IO_OCV                                       
+  Byte/Word       _IO_FxR_GTU2_IO_SFS                                       
+  Byte/Word       _IO_FxR_GTU2_IO_SWNIT                                     
+  Byte/Word       _IO_FxR_GTU2_IO_ACS                                       
+  Byte/Word       _IO_FxR_GTU2_IO_ESID_n(n:0-14)                            
+  Byte/Word       _IO_FxR_GTU2_IO_OSID_n(n:0-14)                            
+----------------------------------------------------------------------------
+
+  I/O Register Name : FxR_NMV                 Address : 0xd1b0-0xd1bb
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_FxR_NMV                                               
+----------------------------------------------------------------------------
+
+  I/O Register Name : FxR_MHD                 Address : 0xd300-0xd34f
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_FxR_MHD_IO_MRC                                        
+  Byte/Word       _IO_FxR_MHD_IO_FRF                                        
+  Byte/Word       _IO_FxR_MHD_IO_FRFM                                       
+  Byte/Word       _IO_FxR_MHD_IO_FCL                                        
+  Byte/Word       _IO_FxR_MHD_IO_MHDS                                       
+  Byte/Word       _IO_FxR_MHD_IO_LDTS                                       
+  Byte/Word       _IO_FxR_MHD_IO_FSR                                        
+  Byte/Word       _IO_FxR_MHD_IO_MHDF                                       
+  Byte/Word       _IO_FxR_MHD_IO_TXRQ1                                      
+  Byte/Word       _IO_FxR_MHD_IO_TXRQ2                                      
+  Byte/Word       _IO_FxR_MHD_IO_TXRQ3                                      
+  Byte/Word       _IO_FxR_MHD_IO_TXRQ4                                      
+  Byte/Word       _IO_FxR_MHD_IO_NDAT1                                      
+  Byte/Word       _IO_FxR_MHD_IO_NDAT2                                      
+  Byte/Word       _IO_FxR_MHD_IO_NDAT3                                      
+  Byte/Word       _IO_FxR_MHD_IO_NDAT4                                      
+  Byte/Word       _IO_FxR_MHD_IO_MBSC1                                      
+  Byte/Word       _IO_FxR_MHD_IO_MBSC2                                      
+  Byte/Word       _IO_FxR_MHD_IO_MBSC3                                      
+  Byte/Word       _IO_FxR_MHD_IO_MBSC4                                      
+----------------------------------------------------------------------------
+
+  I/O Register Name : FxR_GIF2                Address : 0xd3f0-0xd3f7
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_FxR_GIF2_IO_CREL                                      
+  Byte/Word       _IO_FxR_GIF2_IO_ENDN                                      
+----------------------------------------------------------------------------
+
+  I/O Register Name : FxR_WRDS                Address : 0xd400-0xd4ff
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_FxR_WRDS                                              
+----------------------------------------------------------------------------
+
+  I/O Register Name : FxR_IBF                 Address : 0xd500-0xd517
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_FxR_IBF_IO_WRHS1                                      
+  Byte/Word       _IO_FxR_IBF_IO_WRHS2                                      
+  Byte/Word       _IO_FxR_IBF_IO_WRHS3                                      
+  Byte/Word       _IO_FxR_IBF_IO_IBCM                                       
+  Byte/Word       _IO_FxR_IBF_IO_IBCR                                       
+----------------------------------------------------------------------------
+
+  I/O Register Name : FxR_RDDS                Address : 0xd600-0xd6ff
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_FxR_RDDS                                         
+----------------------------------------------------------------------------
+
+  I/O Register Name : FxR_OBF                 Address : 0xd700-0xd717
+----------------------------------------------------------------------------
+  Access Type     Symbol Name                 Macro Name
+----------------------------------------------------------------------------
+  Byte/Word       _IO_FxR_OBF_IO_RDHS1                                      
+  Byte/Word       _IO_FxR_OBF_IO_RDHS2                                      
+  Byte/Word       _IO_FxR_OBF_IO_RDHS3                                      
+  Byte/Word       _IO_FxR_OBF_IO_MBS                                        
+  Byte/Word       _IO_FxR_OBF_IO_OBCM                                       
+  Byte/Word       _IO_FxR_OBF_IO_OBCR                                       
+----------------------------------------------------------------------------
+
+
+
+
+  [History]
+   V01L01  15 May 2008 - created
+   V01L02  23 Jun 2008 - OCS45(0x2DC) register: Bit name error correction
+   V01L03  11 Jul 2008 - CAN1,CAN2 deletion. CAN4 addition.
+
+
+
++-----------------------------------------------------------------------------+
+| - The contents of this document are subject to change without notice.       |
+|   Customers are advised to consult with sales representatives before        |
+|   ordering.                                                                 |
+| - The information, such as descriptions of function and application circuit |
+|   examples, in this document are presented solely for the purpose of        |
+|   reference to show examples of operations and uses of FUJITSU              |
+|   MICROELECTRONICS semiconductor device; FUJITSU MICROELECTRONICS does not  |
+|   warrant proper operation of the device with respect to use based on such  |
+|   information. When you develop equipment incorporating the device based on |
+|   such information, you must assume any responsibility arising out of such  |
+|   use of the information.                                                   |
+|   FUJITSU MICROELECTRONICS assumes no liability for any damages whatsoever  |
+|   arising out of the use of the information.                                |
+| - Any information in this document, including descriptions of function and  |
+|   schematic diagrams, shall not be construed as license of the use or       |
+|   exercise of any intellectual property right, such as patent right or      |
+|   copyright, or any other right of FUJITSU MICROELECTRONICS or any third    |
+|   party or does FUJITSU MICROELECTRONICS warrant non-infringement of any    |
+|   third-party's intellectual property right or other right by using such    |
+|   information. FUJITSU MICROELECTRONICS assumes no liability for any        |
+|   infringement of the intellectual property rights or other rights of third |
+|   parties which would result from the use of information contained herein.  |
+| - The products described in this document are designed, developed and       |
+|   manufactured as contemplated for general use, including without           |
+|   limitation, ordinary industrial use, general office use, personal use,    |
+|   and household use, but are not designed, developed and manufactured as    |
+|   contemplated (1) for use accompanying fatal risks or dangers that, unless |
+|   extremely high safety is secured, could have a serious effect to the      |
+|   public, and could lead directly to death, personal injury, severe         |
+|   physical damage or other loss (i.e., nuclear reaction control in nuclear  |
+|   facility, aircraft flight control, air traffic control, mass transport    |
+|   control, medical life support system, missile launch control in weapon    |
+|   system), or (2) for use requiring extremely high reliability              |
+|   (i.e., submersible repeater and artificial satellite). Please note that   |
+|   FUJITSU MICROELECTRONICS will not be liable against you and/or any third  |
+|   party for any claims or damages arising in connection with                |
+|   above-mentioned uses of the products.                                     |
+| - Any semiconductor devices have an inherent chance of failure. You must    |
+|   protect against injury, damage or loss from such failures by              |
+|   incorporating safety design measures into your facility and equipment     |
+|   such as redundancy, fire protection, and prevention of over-current       |
+|   levels and other abnormal operating conditions.                           |
+| - Exportation/release of any products described in this document may        |
+|   require necessary procedures in accordance with the regulations of the    |
+|   Foreign Exchange and Foreign Trade Control Law of Japan and/or US export  |
+|   control laws.                                                             |
++-----------------------------------------------------------------------------+
+ (C)2008 FUJITSU MICROELECTRONICS LIMITED Printed in Japan

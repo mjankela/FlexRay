@@ -1,0 +1,91 @@
+$CPUSERIES-911
+$Prj-Debug
+$0
+-g
+-w 1
+-INF LIST
+-D NODE_1
+-D NODE_2
+-D DUX_USE_UART
+-U NODE_1
+-O 0
+-K SHORTADDRESS
+-B
+-K NOSCHEDULE
+-K A1
+-K SARG
+-Xdof
+-INF STACK
+-K NOEOPT
+-K NOLIB
+-K NOUNROLL
+$other
+$time
+1313943549
+$end
+$1
+-g
+-w 2
+-O 0
+-linf ON
+-lsrc ON
+-lsec ON
+-lcros OFF
+-linc ON
+-lexp OBJ
+-pl 60
+-pw 100
+-tab 8
+-lf
+-Xdof
+$other
+$time
+1313336538
+$end
+$2
+-g
+-AL 2
+-ra _INRAM01=0x0002C800/0x0002FFFF
+-ra _INRAM02=0x00030000/0x00033FFF
+-ro _INROM01=0x00080000/0x000EFFFF
+-ro _INROM02=0x00148000/0x0014FFFF
+-sc INIT=_INRAM01
+-sc CODE/code+@INIT+CONST/const=_INROM01
+-sc STACK/stack=0x0002FC00
+-check_rora
+-check_locate
+-m
+-pl 60
+-pw 132
+-Xals
+-Xalr
+-na
+-w 1
+-Xdof
+$other
+$time
+1313935850
+$end
+$3
+-m
+-dt s,d,r,a
+-pl 60
+-pw 132
+-Xdof
+$other
+$time
+1313935622
+$end
+$4
+-Xdof
+$other
+$time
+1242554310
+$end
+$5
+$other
+$time
+1242554310
+$end
+$Prjend
+$CPUSERIESEND
