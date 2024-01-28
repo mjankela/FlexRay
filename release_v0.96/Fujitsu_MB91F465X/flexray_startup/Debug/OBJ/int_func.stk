@@ -1,0 +1,17 @@
+@Y:\FlexRayDriver\Fujitsu_MB91F465X\flexray_startup\interrupt\int_func.c
+# E=Extern  S=Static  I=Interrupt
+#   {Stack}    {E|S|I} {function name} [A]
+#       ->     {E|S}   {call function}
+#               ...
+#
+         8	E	_printReceivedFXBuffer
+#
+        60	I	_ADC_int
+	->	E	_DUXWatchDogReset
+	->	E	_DUXFXSendData
+#
+        60	I	_iFlxStatusInterrupt
+	->	E	_DUXWatchDogReset
+	->	E	_DUXFXGetBufferNo
+	->	E	_DUXFXReceiveControl
+	->	E	_DUXFXReceiveStatus

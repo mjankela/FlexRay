@@ -1,0 +1,402 @@
+_____________________________________________________________________________
+FR Family SOFTUNE Assembler V60L09            2011-08-19 19:53:01   Page:   1
+- ASSEMBLE INFORMATION - ( watchdog )
+
+|             Command line         :  C:\Softune6\bin\fasm911s -f C:\DOKUME |
+|                                     ~1\ADMINI~1\LOKALE~1\Temp\fccb98_2\fc |
+|                                     cb98_3.opt -o Y:\FlexRayDriver\Fujits |
+|                                     u_MB91F465X\flexray_startup\Debug\OBJ |
+|                                     \watchdog.obj Y:\FlexRayDriver\Fujits |
+|                                     u_MB91F465X\flexray_startup\Debug\LST |
+|                                     \watchdog.asm                         |
+|                                                                           |
+|             Total errors         :    0                                   |
+|             Total warnings       :    0                                   |
+|                                       There were no errors.               |
+|                                                                           |
+|             Object file          :  Y:\FlexRayDriver\Fujitsu_MB91F465X\fl |
+|                                     exray_startup\Debug\OBJ\watchdog.obj  |
+|             List file            :  watchdog.lst                          |
+|                                                                           |
+|                                                                           |
+| NO NEST     SOURCE-FILE-NAME                     CREATE DATE/TIME         |
+| -- -------- ------------------------------------ ------------------------ |
+|  0          Y:\FlexRayDriver\Fujitsu_MB91F465X\f 2011-08-19 19:53:02      |
+|             lexray_startup\Debug\LST\watchdog.as                          |
+|             m                                                             |
+| -- -------- ------------------------------------ ------------------------ |
+|                                                                           |
+|                                                                           |
+|             Current path         :  Y:\FlexRayDriver\Fujitsu_MB91F465X\fl |
+|                                     exray_startup                         |
+|             Include path         :  INC911     = C:\Softune6\LIB\911\INCL |
+|                                                  UDE\                     |
+|             Work file path       :  TMP        =                          |
+|             Default Option file  :  OPT911     = C:\Softune6\LIB\911\ (fa |
+|                                                  sm911.opt)               |
+|                                                                           |
+|                                                                           |
+| NO NEST     OPTION-FILE-NAME                     CREATE DATE/TIME         |
+| -- -------- ------------------------------------ ------------------------ |
+|  0          C:\Softune6\LIB\911\fasm911.opt      2001-11-19 21:10:00      |
+|             ------------------------------------                          |
+|             # FR Family Softune Assembler Defaul                          |
+|             t Option File                                                 |
+| -- -------- ------------------------------------ ------------------------ |
+|  1          C:\DOKUME~1\ADMINI~1\LOKALE~1\Temp\f 2011-08-19 19:53:01      |
+|             ccb98_2\fccb98_3.opt                                          |
+|             ------------------------------------                          |
+|             "-g"                                                          |
+|             "-cpu"                                                        |
+|             "MB91F465X"                                                   |
+|             "-XUDSW"                                                      |
+|             "-lf"                                                         |
+|             "watchdog.lst"                                                |
+| -- -------- ------------------------------------ ------------------------ |
+|___________________________________________________________________________|
+
+
+_____________________________________________________________________________
+FR Family SOFTUNE Assembler V60L09            2011-08-19 19:53:01   Page:   2
+- SOURCE LISTING - ( watchdog )
+
+SN LOC      OBJ                           LLINE           SOURCE
+
+<Y:\FlexRayDriver\Fujitsu_MB91F465X\flexr
+ay_startup\Debug\LST\watchdog.asm>        ==========
+                                                   1      //                                      F
+                                                          R Family SOFTUNE cpcom V65L06
+MODULE NAME = watchdog                             2              .program        "watchdog"
+                                                   3              .library        "lib911.lib"
+                                                   4              ._LANGUAGE      C_FR20, N, U, F
+                                                   5              ._FILE  "Y:\FlexRayDriver\Fujitsu
+                                                          _MB91F465X\flexray_startup\src\watchdog.c
+                                                          ", 0
+                                                   6              ._FILE  "Y:\FlexRayDriver\Fujitsu
+                                                          _MB91F465X\flexray_startup\src\..\IO_MB91
+                                                          465X_V01L03\mb91f465x.h", 1
+                                                   7              ._FILE  "Y:\FlexRayDriver\Fujitsu
+                                                          _MB91F465X\flexray_startup\src\..\IO_MB91
+                                                          465X_V01L03\_fr.h", 2
+                                                   8              ._FILE  "Y:\FlexRayDriver\Fujitsu
+                                                          _MB91F465X\flexray_startup\src\..\h_file\
+                                                          ..\h_file\Platform_Types.h", 3
+                                                   9              ._FILE  "Y:\FlexRayDriver\Fujitsu
+                                                          _MB91F465X\flexray_startup\src\..\h_file\
+                                                          watchdog.h", 4
+                                                  10              ._BTYPE 0x80000001, 1
+                                                  11              ._BTYPE 0x80000002, 1
+                                                  12              ._BTYPE 0x80000003, 2
+                                                  13              ._BTYPE 0x80000004, 2
+                                                  14              ._BTYPE 0x80000005, 4
+                                                  15              ._BTYPE 0x80000006, 4
+                                                  16              ._BTYPE 0x80000007, 4
+                                                  17              ._BTYPE 0x80000008, 4
+                                                  18              ._BTYPE 0x80000009, 1
+                                                  19              ._BTYPE 0x8000000a, 2
+                                                  20              ._BTYPE 0x8000000b, 4
+                                                  21              ._BTYPE 0x8000000c, 8
+                                                  22              ._BTYPE 0x8000000d, 8
+                                                  23              ._BTYPE 0x8000000e, 1
+                                                  24              ._BTYPE 0x8000000f, 0
+                                                  25              ._BTYPE 0x80000010, 8
+                                                  26              ._BTYPE 0x80000011, 8
+                                                  27              .global _IO_PDR14
+                                                  28              .global _IO_PDR15
+                                                  29              .global _IO_PDR16
+                                                  30              .global _IO_PDR17
+                                                  31              .global _IO_PDR18
+                                                  32              .global _IO_PDR19
+                                                  33              .global _IO_PDR22
+                                                  34              .global _IO_PDR23
+                                                  35              .global _IO_PDR24
+                                                  36              .global _IO_PDR27
+                                                  37              .global _IO_PDR28
+                                                  38              .global _IO_PDR29
+                                                  39              .global _IO_PDR31
+                                                  40              .global _IO_EIRR0
+                                                  41              .global _IO_ENIR0
+_____________________________________________________________________________
+FR Family SOFTUNE Assembler V60L09            2011-08-19 19:53:01   Page:   3
+- SOURCE LISTING - ( watchdog )
+
+SN LOC      OBJ                           LLINE           SOURCE
+
+                                                  42              .global _IO_ELVR0
+                                                  43              .global _IO_EIRR1
+                                                  44              .global _IO_ENIR1
+                                                  45              .global _IO_ELVR1
+                                                  46              .global _IO_DICR
+                                                  47              .global _IO_HRCL
+                                                  48              .global _IO_RBSYNC
+                                                  49              .global _IO_SCR04
+                                                  50              .global _IO_SMR04
+                                                  51              .global _IO_SSR04
+                                                  52              .global _IO_RDR04
+                                                  53              .global _IO_ESCR04
+                                                  54              .global _IO_ECCR04
+                                                  55              .global _IO_FSR04
+                                                  56              .global _IO_FCR04
+                                                  57              .global _IO_SCR06
+                                                  58              .global _IO_SMR06
+                                                  59              .global _IO_SSR06
+                                                  60              .global _IO_RDR06
+                                                  61              .global _IO_ESCR06
+                                                  62              .global _IO_ECCR06
+                                                  63              .global _IO_FSR06
+                                                  64              .global _IO_FCR06
+                                                  65              .global _IO_SCR07
+                                                  66              .global _IO_SMR07
+                                                  67              .global _IO_SSR07
+                                                  68              .global _IO_RDR07
+                                                  69              .global _IO_ESCR07
+                                                  70              .global _IO_ECCR07
+                                                  71              .global _IO_FSR07
+                                                  72              .global _IO_FCR07
+                                                  73              .global _IO_BGR04
+                                                  74              .global _IO_BGR06
+                                                  75              .global _IO_BGR07
+                                                  76              .global _IO_IIC0
+                                                  77              .global _IO_GCN10
+                                                  78              .global _IO_GCN20
+                                                  79              .global _IO_GCN11
+                                                  80              .global _IO_GCN21
+                                                  81              .global _IO_GCN12
+                                                  82              .global _IO_GCN22
+                                                  83              .global _IO_PTMR00
+                                                  84              .global _IO_PCSR00
+                                                  85              .global _IO_PDUT00
+                                                  86              .global _IO_PCN00
+                                                  87              .global _IO_PTMR01
+                                                  88              .global _IO_PCSR01
+                                                  89              .global _IO_PDUT01
+                                                  90              .global _IO_PCN01
+                                                  91              .global _IO_PTMR02
+                                                  92              .global _IO_PCSR02
+                                                  93              .global _IO_PDUT02
+                                                  94              .global _IO_PCN02
+                                                  95              .global _IO_PTMR03
+_____________________________________________________________________________
+FR Family SOFTUNE Assembler V60L09            2011-08-19 19:53:01   Page:   4
+- SOURCE LISTING - ( watchdog )
+
+SN LOC      OBJ                           LLINE           SOURCE
+
+                                                  96              .global _IO_PCSR03
+                                                  97              .global _IO_PDUT03
+                                                  98              .global _IO_PCN03
+                                                  99              .global _IO_PTMR04
+                                                 100              .global _IO_PCSR04
+                                                 101              .global _IO_PDUT04
+                                                 102              .global _IO_PCN04
+                                                 103              .global _IO_PTMR05
+                                                 104              .global _IO_PCSR05
+                                                 105              .global _IO_PDUT05
+                                                 106              .global _IO_PCN05
+                                                 107              .global _IO_PTMR06
+                                                 108              .global _IO_PCSR06
+                                                 109              .global _IO_PDUT06
+                                                 110              .global _IO_PCN06
+                                                 111              .global _IO_PTMR07
+                                                 112              .global _IO_PCSR07
+                                                 113              .global _IO_PDUT07
+                                                 114              .global _IO_PCN07
+                                                 115              .global _IO_PTMR08
+                                                 116              .global _IO_PCSR08
+                                                 117              .global _IO_PDUT08
+                                                 118              .global _IO_PCN08
+                                                 119              .global _IO_PTMR09
+                                                 120              .global _IO_PCSR09
+                                                 121              .global _IO_PDUT09
+                                                 122              .global _IO_PCN09
+                                                 123              .global _IO_PTMR10
+                                                 124              .global _IO_PCSR10
+                                                 125              .global _IO_PDUT10
+                                                 126              .global _IO_PCN10
+                                                 127              .global _IO_PTMR11
+                                                 128              .global _IO_PCSR11
+                                                 129              .global _IO_PDUT11
+                                                 130              .global _IO_PCN11
+                                                 131              .global _IO_ICS01
+                                                 132              .global _IO_ICS23
+                                                 133              .global _IO_IPCP0
+                                                 134              .global _IO_IPCP1
+                                                 135              .global _IO_IPCP2
+                                                 136              .global _IO_IPCP3
+                                                 137              .global _IO_OCS01
+                                                 138              .global _IO_OCS23
+                                                 139              .global _IO_OCCP0
+                                                 140              .global _IO_OCCP1
+                                                 141              .global _IO_OCCP2
+                                                 142              .global _IO_OCCP3
+                                                 143              .global _IO_AD
+                                                 144              .global _IO_TMRLR0
+                                                 145              .global _IO_TMR0
+                                                 146              .global _IO_TMCSR0
+                                                 147              .global _IO_TMRLR1
+                                                 148              .global _IO_TMR1
+                                                 149              .global _IO_TMCSR1
+_____________________________________________________________________________
+FR Family SOFTUNE Assembler V60L09            2011-08-19 19:53:01   Page:   5
+- SOURCE LISTING - ( watchdog )
+
+SN LOC      OBJ                           LLINE           SOURCE
+
+                                                 150              .global _IO_TMRLR2
+                                                 151              .global _IO_TMR2
+                                                 152              .global _IO_TMCSR2
+                                                 153              .global _IO_TMRLR3
+                                                 154              .global _IO_TMR3
+                                                 155              .global _IO_TMCSR3
+                                                 156              .global _IO_TMRLR4
+                                                 157              .global _IO_TMR4
+                                                 158              .global _IO_TMCSR4
+                                                 159              .global _IO_TMRLR5
+                                                 160              .global _IO_TMR5
+                                                 161              .global _IO_TMCSR5
+                                                 162              .global _IO_TMRLR6
+                                                 163              .global _IO_TMR6
+                                                 164              .global _IO_TMCSR6
+                                                 165              .global _IO_TMRLR7
+                                                 166              .global _IO_TMR7
+                                                 167              .global _IO_TMCSR7
+                                                 168              .global _IO_TCDT0
+                                                 169              .global _IO_TCCS0
+                                                 170              .global _IO_TCDT1
+                                                 171              .global _IO_TCCS1
+                                                 172              .global _IO_TCDT2
+                                                 173              .global _IO_TCCS2
+                                                 174              .global _IO_TCDT3
+                                                 175              .global _IO_TCCS3
+                                                 176              .global _IO_DMACA0
+                                                 177              .global _IO_DMACB0
+                                                 178              .global _IO_DMACA1
+                                                 179              .global _IO_DMACB1
+                                                 180              .global _IO_DMACA2
+                                                 181              .global _IO_DMACB2
+                                                 182              .global _IO_DMACA3
+                                                 183              .global _IO_DMACB3
+                                                 184              .global _IO_DMACA4
+                                                 185              .global _IO_DMACB4
+                                                 186              .global _IO_DMACR
+                                                 187              .global _IO_ICS45
+                                                 188              .global _IO_ICS67
+                                                 189              .global _IO_IPCP4
+                                                 190              .global _IO_IPCP5
+                                                 191              .global _IO_IPCP6
+                                                 192              .global _IO_IPCP7
+                                                 193              .global _IO_OCS45
+                                                 194              .global _IO_OCCP4
+                                                 195              .global _IO_OCCP5
+                                                 196              .global _IO_TCDT4
+                                                 197              .global _IO_TCCS4
+                                                 198              .global _IO_TCDT5
+                                                 199              .global _IO_TCCS5
+                                                 200              .global _IO_TCDT6
+                                                 201              .global _IO_TCCS6
+                                                 202              .global _IO_TCDT7
+                                                 203              .global _IO_TCCS7
+_____________________________________________________________________________
+FR Family SOFTUNE Assembler V60L09            2011-08-19 19:53:01   Page:   6
+- SOURCE LISTING - ( watchdog )
+
+SN LOC      OBJ                           LLINE           SOURCE
+
+                                                 204              .global _IO_ROMS
+                                                 205              .global _IO_BSD0
+                                                 206              .global _IO_BSD1
+                                                 207              .global _IO_BSDC
+                                                 208              .global _IO_BSRR
+                                                 209              .global _IO_ICR
+                                                 210              .global _IO_CLK
+                                                 211              .global _IO_PLL
+                                                 212              .global _IO_OSCC1
+                                                 213              .global _IO_OSCS1
+                                                 214              .global _IO_OSCC2
+                                                 215              .global _IO_OSCS2
+                                                 216              .global _IO_PORTEN
+                                                 217              .global _IO_WT
+                                                 218              .global _IO_CSS
+                                                 219              .global _IO_CUSO
+                                                 220              .global _IO_CM
+                                                 221              .global _IO_CANPRE
+                                                 222              .global _IO_CANCKD
+                                                 223              .global _IO_LVD
+                                                 224              .global _IO_OST
+                                                 225              .global _IO_OSC
+                                                 226              .global _IO_PLL2
+                                                 227              .global _IO_IOS
+                                                 228              .global _IO_PORT2
+                                                 229              .global _IO_DMAD
+                                                 230              .global _IO_FMCS
+                                                 231              .global _IO_FMCR
+                                                 232              .global _IO_FCHCR
+                                                 233              .global _IO_FMWT
+                                                 234              .global _IO_FMWT2
+                                                 235              .global _IO_FMPS
+                                                 236              .global _IO_FMAC
+                                                 237              .global _IO_CAN0
+                                                 238              .global _IO_CAN4
+                                                 239              .global _IO_FxR_CIF
+                                                 240              .global _IO_FxR_GIF1
+                                                 241              .global _IO_FxR_INT
+                                                 242              .global _IO_FxR_SUC1
+                                                 243              .global _IO_FxR_NEMC
+                                                 244              .global _IO_FxR_PRT
+                                                 245              .global _IO_FxR_MHDC
+                                                 246              .global _IO_FxR_GTU1
+                                                 247              .global _IO_FxR_SUC2
+                                                 248              .global _IO_FxR_GTU2
+                                                 249              .global _IO_FxR_NMV
+                                                 250              .global _IO_FxR_MHD
+                                                 251              .global _IO_FxR_GIF2
+                                                 252              .global _IO_FxR_WRDS
+                                                 253              .global _IO_FxR_IBF
+                                                 254              .global _IO_FxR_RDDS
+                                                 255              .global _IO_FxR_OBF
+CO 00000000 -----------<CODE>------------        256              .section        CODE, CODE, align
+                                                          =2
+_____________________________________________________________________________
+FR Family SOFTUNE Assembler V60L09            2011-08-19 19:53:01   Page:   7
+- SOURCE LISTING - ( watchdog )
+
+SN LOC      OBJ                           LLINE           SOURCE
+
+                                                 257              .global _DUXWatchDogReset
+                                                 258              ._SYMBOL        "DUXWatchDogReset
+                                                          ", F, 0x8000000f, E, "_DUXWatchDogReset",
+                                                           F
+                                                 259              ._FPARAM        S, 0, F
+                                                 260              ._FPARAM        E
+                                                 261              ._CONFIG        S, F, 1
+                                                 262              ._LINE  0, 27
+CO 00000000                                      263      _DUXWatchDogReset:
+CO 00000000                                      264      L_20:
+CO 00000000 1781                                 265              ST      RP,@-SP
+CO 00000002 0F01                                 266              ENTER   #4
+                                                 267      ;-------end_of_no_optimize_block
+                                                 268              ._FUNCTION      "fp", "fp", 16
+                                                 269              ._CONFIG        S, B
+CO 00000004                                      270      L_21:                           // Pred:
+                                                          L_20
+                                                 271              ._LINE  0, 28
+CO 00000004 9B000000                  I          272              LDI:20  #_IO_LVD+3,R0
+                                                 273   x          BAND    #0xF7,@R0
+CO 00000008 8070                                       O  "BANDL"
+CO 0000000A                                      274      L_22:                           // Pred:
+                                                          L_21
+                                                 275              ._LINE  0, 28
+                                                 276              ._CONFIG        E
+                                                 277              ._LINE  0, 29
+CO 0000000A 9F90                                 278              LEAVE
+CO 0000000C 0781                                 279              LD      @SP+,RP
+CO 0000000E 9720                                 280              RET
+                                                 281              ._CONFIG        E
+            ==                                   282              .end
+_____________________________________________________________________________
+FR Family SOFTUNE Assembler V60L09            2011-08-19 19:53:01   Page:   8
+- SECTION LISTING - ( watchdog )
+
+   NO SECTION-NAME                        SIZE   ATTRIBUTES
+
+    0 CODE . . . . . . . . . . . . . .  00000010 CODE    REL ALIGN=2

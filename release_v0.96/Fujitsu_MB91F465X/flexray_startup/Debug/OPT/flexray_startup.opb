@@ -1,0 +1,18 @@
+-m "Y:\FlexRayDriver\Fujitsu_MB91F465X\flexray_startup\Debug\LST\flexray_startup.mp2"
+-dt s,d,r,a
+-pl 60
+-pw 132
+-cwno
+-cpu MB91F465X
+"Y:\FlexRayDriver\Fujitsu_MB91F465X\flexray_startup\Debug\ABS\flexray_startup.abs"
+-a "Y:\FlexRayDriver\Fujitsu_MB91F465X\flexray_startup\Debug\OBJ\startup.obj"
+-a "Y:\FlexRayDriver\Fujitsu_MB91F465X\flexray_startup\Debug\OBJ\main.obj"
+-a "Y:\FlexRayDriver\Fujitsu_MB91F465X\flexray_startup\Debug\OBJ\_fr.obj"
+-a "Y:\FlexRayDriver\Fujitsu_MB91F465X\flexray_startup\Debug\OBJ\dux_uart.obj"
+-a "Y:\FlexRayDriver\Fujitsu_MB91F465X\flexray_startup\Debug\OBJ\dux_flexray.obj"
+-a "Y:\FlexRayDriver\Fujitsu_MB91F465X\flexray_startup\Debug\OBJ\dux_watchdog.obj"
+-a "Y:\FlexRayDriver\Fujitsu_MB91F465X\flexray_startup\Debug\OBJ\dux_adc.obj"
+-a "Y:\FlexRayDriver\Fujitsu_MB91F465X\flexray_startup\Debug\OBJ\dux_ports.obj"
+-a "Y:\FlexRayDriver\Fujitsu_MB91F465X\flexray_startup\Debug\OBJ\vect.obj"
+-a "Y:\FlexRayDriver\Fujitsu_MB91F465X\flexray_startup\Debug\OBJ\dux_interrupts.obj"
+

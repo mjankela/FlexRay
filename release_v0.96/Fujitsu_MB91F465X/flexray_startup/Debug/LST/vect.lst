@@ -1,0 +1,387 @@
+_____________________________________________________________________________
+FR Family SOFTUNE Assembler V60L09            2011-08-21 18:19:24   Page:   1
+- ASSEMBLE INFORMATION - ( vect )
+
+|             Command line         :  C:\Softune6\bin\fasm911s -f C:\DOKUME |
+|                                     ~1\ADMINI~1\LOKALE~1\Temp\fcc770_2\fc |
+|                                     c770_3.opt -o Y:\FlexRayDriver\Fujits |
+|                                     u_MB91F465X\flexray_startup\Debug\OBJ |
+|                                     \vect.obj Y:\FlexRayDriver\Fujitsu_MB |
+|                                     91F465X\flexray_startup\Debug\LST\vec |
+|                                     t.asm                                 |
+|                                                                           |
+|             Total errors         :    0                                   |
+|             Total warnings       :    0                                   |
+|                                       There were no errors.               |
+|                                                                           |
+|             Object file          :  Y:\FlexRayDriver\Fujitsu_MB91F465X\fl |
+|                                     exray_startup\Debug\OBJ\vect.obj      |
+|             List file            :  vect.lst                              |
+|                                                                           |
+|                                                                           |
+| NO NEST     SOURCE-FILE-NAME                     CREATE DATE/TIME         |
+| -- -------- ------------------------------------ ------------------------ |
+|  0          Y:\FlexRayDriver\Fujitsu_MB91F465X\f 2011-08-21 18:19:25      |
+|             lexray_startup\Debug\LST\vect.asm                             |
+| -- -------- ------------------------------------ ------------------------ |
+|                                                                           |
+|                                                                           |
+|             Current path         :  Y:\FlexRayDriver\Fujitsu_MB91F465X\fl |
+|                                     exray_startup                         |
+|             Include path         :  INC911     = C:\Softune6\LIB\911\INCL |
+|                                                  UDE\                     |
+|             Work file path       :  TMP        =                          |
+|             Default Option file  :  OPT911     = C:\Softune6\LIB\911\ (fa |
+|                                                  sm911.opt)               |
+|                                                                           |
+|                                                                           |
+| NO NEST     OPTION-FILE-NAME                     CREATE DATE/TIME         |
+| -- -------- ------------------------------------ ------------------------ |
+|  0          C:\Softune6\LIB\911\fasm911.opt      2001-11-19 21:10:00      |
+|             ------------------------------------                          |
+|             # FR Family Softune Assembler Defaul                          |
+|             t Option File                                                 |
+| -- -------- ------------------------------------ ------------------------ |
+|  1          C:\DOKUME~1\ADMINI~1\LOKALE~1\Temp\f 2011-08-21 18:19:24      |
+|             cc770_2\fcc770_3.opt                                          |
+|             ------------------------------------                          |
+|             "-g"                                                          |
+|             "-cpu"                                                        |
+|             "MB91F465X"                                                   |
+|             "-XUDSW"                                                      |
+|             "-lf"                                                         |
+|             "vect.lst"                                                    |
+| -- -------- ------------------------------------ ------------------------ |
+|___________________________________________________________________________|
+
+
+_____________________________________________________________________________
+FR Family SOFTUNE Assembler V60L09            2011-08-21 18:19:24   Page:   2
+- SOURCE LISTING - ( vect )
+
+SN LOC      OBJ                           LLINE           SOURCE
+
+<Y:\FlexRayDriver\Fujitsu_MB91F465X\flexr
+ay_startup\Debug\LST\vect.asm>            ==========
+                                                   1      //                                      F
+                                                          R Family SOFTUNE cpcom V65L06
+MODULE NAME = vect                                 2              .program        "vect"
+                                                   3              .library        "lib911.lib"
+                                                   4              ._LANGUAGE      C_FR20, N, U, F
+                                                   5              ._FILE  "Y:\FlexRayDriver\Fujitsu
+                                                          _MB91F465X\flexray_startup\interrupt\vect
+                                                          .c", 0
+                                                   6              ._FILE  "Y:\FlexRayDriver\Fujitsu
+                                                          _MB91F465X\flexray_startup\interrupt\..\h
+                                                          _file\system.h", 1
+                                                   7              ._FILE  "Y:\FlexRayDriver\Fujitsu
+                                                          _MB91F465X\flexray_startup\interrupt\..\i
+                                                          nterrupt\dux_interrupts.h", 2
+                                                   8              ._FILE  "Y:\FlexRayDriver\Fujitsu
+                                                          _MB91F465X\flexray_startup\interrupt\..\I
+                                                          O_MB91465X_V01L03\mb91f465x.h", 3
+                                                   9              ._FILE  "Y:\FlexRayDriver\Fujitsu
+                                                          _MB91F465X\flexray_startup\interrupt\..\I
+                                                          O_MB91465X_V01L03\_fr.h", 4
+                                                  10              ._BTYPE 0x80000001, 1
+                                                  11              ._BTYPE 0x80000002, 1
+                                                  12              ._BTYPE 0x80000003, 2
+                                                  13              ._BTYPE 0x80000004, 2
+                                                  14              ._BTYPE 0x80000005, 4
+                                                  15              ._BTYPE 0x80000006, 4
+                                                  16              ._BTYPE 0x80000007, 4
+                                                  17              ._BTYPE 0x80000008, 4
+                                                  18              ._BTYPE 0x80000009, 1
+                                                  19              ._BTYPE 0x8000000a, 2
+                                                  20              ._BTYPE 0x8000000b, 4
+                                                  21              ._BTYPE 0x8000000c, 8
+                                                  22              ._BTYPE 0x8000000d, 8
+                                                  23              ._BTYPE 0x8000000e, 1
+                                                  24              ._BTYPE 0x8000000f, 0
+                                                  25              ._BTYPE 0x80000010, 8
+                                                  26              ._BTYPE 0x80000011, 8
+IN 00080000 ----------<INTVECT>----------         27              .section        INTVECT, CONST, l
+                                                          ocate=0x00080000
+IN 00080000 - 00080000 [0] < [4]                  28              .align  4
+IN 00080000 [121] 00000000            I           29              .datab.w        121,__default_vec
+                                                          t
+IN 000801E4 00000000I                             30              .data.w _ADC_int
+IN 000801E8 [49]  00000000            I           31              .datab.w        49,__default_vect
+IN 000802AC 00000000I                             32              .data.w _iFlxStatusInterrupt
+IN 000802B0 [63]  00000000            I           33              .datab.w        63,__default_vect
+IN 000803AC 000F2B20                              34              .data.w 0x000f2b20
+IN 000803B0 [7] 00000000              I           35              .datab.w        7,__default_vect
+IN 000803CC 000F2B5E                              36              .data.w 0x000f2b5e
+IN 000803D0 [1] 00000000              I           37              .datab.w        1,__default_vect
+IN 000803D4 000F2B28                              38              .data.w 0x000f2b28
+IN 000803D8 000F2B18                              39              .data.w 0x000f2b18
+_____________________________________________________________________________
+FR Family SOFTUNE Assembler V60L09            2011-08-21 18:19:24   Page:   3
+- SOURCE LISTING - ( vect )
+
+SN LOC      OBJ                           LLINE           SOURCE
+
+IN 000803DC [7] 00000000              I           40              .datab.w        7,__default_vect
+IN 000803F8 05000000                              41              .data.w 0x05000000
+IN 000803FC 00000000I                             42              .data.w __start
+                                                  43              .global _IO_PDR14
+                                                  44              .global _IO_PDR15
+                                                  45              .global _IO_PDR16
+                                                  46              .global _IO_PDR17
+                                                  47              .global _IO_PDR18
+                                                  48              .global _IO_PDR19
+                                                  49              .global _IO_PDR22
+                                                  50              .global _IO_PDR23
+                                                  51              .global _IO_PDR24
+                                                  52              .global _IO_PDR27
+                                                  53              .global _IO_PDR28
+                                                  54              .global _IO_PDR29
+                                                  55              .global _IO_PDR31
+                                                  56              .global _IO_EIRR0
+                                                  57              .global _IO_ENIR0
+                                                  58              .global _IO_ELVR0
+                                                  59              .global _IO_EIRR1
+                                                  60              .global _IO_ENIR1
+                                                  61              .global _IO_ELVR1
+                                                  62              .global _IO_DICR
+                                                  63              .global _IO_HRCL
+                                                  64              .global _IO_RBSYNC
+                                                  65              .global _IO_SCR04
+                                                  66              .global _IO_SMR04
+                                                  67              .global _IO_SSR04
+                                                  68              .global _IO_RDR04
+                                                  69              .global _IO_ESCR04
+                                                  70              .global _IO_ECCR04
+                                                  71              .global _IO_FSR04
+                                                  72              .global _IO_FCR04
+                                                  73              .global _IO_SCR06
+                                                  74              .global _IO_SMR06
+                                                  75              .global _IO_SSR06
+                                                  76              .global _IO_RDR06
+                                                  77              .global _IO_ESCR06
+                                                  78              .global _IO_ECCR06
+                                                  79              .global _IO_FSR06
+                                                  80              .global _IO_FCR06
+                                                  81              .global _IO_SCR07
+                                                  82              .global _IO_SMR07
+                                                  83              .global _IO_SSR07
+                                                  84              .global _IO_RDR07
+                                                  85              .global _IO_ESCR07
+                                                  86              .global _IO_ECCR07
+                                                  87              .global _IO_FSR07
+                                                  88              .global _IO_FCR07
+                                                  89              .global _IO_BGR04
+                                                  90              .global _IO_BGR06
+                                                  91              .global _IO_BGR07
+                                                  92              .global _IO_IIC0
+                                                  93              .global _IO_GCN10
+_____________________________________________________________________________
+FR Family SOFTUNE Assembler V60L09            2011-08-21 18:19:24   Page:   4
+- SOURCE LISTING - ( vect )
+
+SN LOC      OBJ                           LLINE           SOURCE
+
+                                                  94              .global _IO_GCN20
+                                                  95              .global _IO_GCN11
+                                                  96              .global _IO_GCN21
+                                                  97              .global _IO_GCN12
+                                                  98              .global _IO_GCN22
+                                                  99              .global _IO_PTMR00
+                                                 100              .global _IO_PCSR00
+                                                 101              .global _IO_PDUT00
+                                                 102              .global _IO_PCN00
+                                                 103              .global _IO_PTMR01
+                                                 104              .global _IO_PCSR01
+                                                 105              .global _IO_PDUT01
+                                                 106              .global _IO_PCN01
+                                                 107              .global _IO_PTMR02
+                                                 108              .global _IO_PCSR02
+                                                 109              .global _IO_PDUT02
+                                                 110              .global _IO_PCN02
+                                                 111              .global _IO_PTMR03
+                                                 112              .global _IO_PCSR03
+                                                 113              .global _IO_PDUT03
+                                                 114              .global _IO_PCN03
+                                                 115              .global _IO_PTMR04
+                                                 116              .global _IO_PCSR04
+                                                 117              .global _IO_PDUT04
+                                                 118              .global _IO_PCN04
+                                                 119              .global _IO_PTMR05
+                                                 120              .global _IO_PCSR05
+                                                 121              .global _IO_PDUT05
+                                                 122              .global _IO_PCN05
+                                                 123              .global _IO_PTMR06
+                                                 124              .global _IO_PCSR06
+                                                 125              .global _IO_PDUT06
+                                                 126              .global _IO_PCN06
+                                                 127              .global _IO_PTMR07
+                                                 128              .global _IO_PCSR07
+                                                 129              .global _IO_PDUT07
+                                                 130              .global _IO_PCN07
+                                                 131              .global _IO_PTMR08
+                                                 132              .global _IO_PCSR08
+                                                 133              .global _IO_PDUT08
+                                                 134              .global _IO_PCN08
+                                                 135              .global _IO_PTMR09
+                                                 136              .global _IO_PCSR09
+                                                 137              .global _IO_PDUT09
+                                                 138              .global _IO_PCN09
+                                                 139              .global _IO_PTMR10
+                                                 140              .global _IO_PCSR10
+                                                 141              .global _IO_PDUT10
+                                                 142              .global _IO_PCN10
+                                                 143              .global _IO_PTMR11
+                                                 144              .global _IO_PCSR11
+                                                 145              .global _IO_PDUT11
+                                                 146              .global _IO_PCN11
+                                                 147              .global _IO_ICS01
+_____________________________________________________________________________
+FR Family SOFTUNE Assembler V60L09            2011-08-21 18:19:24   Page:   5
+- SOURCE LISTING - ( vect )
+
+SN LOC      OBJ                           LLINE           SOURCE
+
+                                                 148              .global _IO_ICS23
+                                                 149              .global _IO_IPCP0
+                                                 150              .global _IO_IPCP1
+                                                 151              .global _IO_IPCP2
+                                                 152              .global _IO_IPCP3
+                                                 153              .global _IO_OCS01
+                                                 154              .global _IO_OCS23
+                                                 155              .global _IO_OCCP0
+                                                 156              .global _IO_OCCP1
+                                                 157              .global _IO_OCCP2
+                                                 158              .global _IO_OCCP3
+                                                 159              .global _IO_AD
+                                                 160              .global _IO_TMRLR0
+                                                 161              .global _IO_TMR0
+                                                 162              .global _IO_TMCSR0
+                                                 163              .global _IO_TMRLR1
+                                                 164              .global _IO_TMR1
+                                                 165              .global _IO_TMCSR1
+                                                 166              .global _IO_TMRLR2
+                                                 167              .global _IO_TMR2
+                                                 168              .global _IO_TMCSR2
+                                                 169              .global _IO_TMRLR3
+                                                 170              .global _IO_TMR3
+                                                 171              .global _IO_TMCSR3
+                                                 172              .global _IO_TMRLR4
+                                                 173              .global _IO_TMR4
+                                                 174              .global _IO_TMCSR4
+                                                 175              .global _IO_TMRLR5
+                                                 176              .global _IO_TMR5
+                                                 177              .global _IO_TMCSR5
+                                                 178              .global _IO_TMRLR6
+                                                 179              .global _IO_TMR6
+                                                 180              .global _IO_TMCSR6
+                                                 181              .global _IO_TMRLR7
+                                                 182              .global _IO_TMR7
+                                                 183              .global _IO_TMCSR7
+                                                 184              .global _IO_TCDT0
+                                                 185              .global _IO_TCCS0
+                                                 186              .global _IO_TCDT1
+                                                 187              .global _IO_TCCS1
+                                                 188              .global _IO_TCDT2
+                                                 189              .global _IO_TCCS2
+                                                 190              .global _IO_TCDT3
+                                                 191              .global _IO_TCCS3
+                                                 192              .global _IO_DMACA0
+                                                 193              .global _IO_DMACB0
+                                                 194              .global _IO_DMACA1
+                                                 195              .global _IO_DMACB1
+                                                 196              .global _IO_DMACA2
+                                                 197              .global _IO_DMACB2
+                                                 198              .global _IO_DMACA3
+                                                 199              .global _IO_DMACB3
+                                                 200              .global _IO_DMACA4
+                                                 201              .global _IO_DMACB4
+_____________________________________________________________________________
+FR Family SOFTUNE Assembler V60L09            2011-08-21 18:19:24   Page:   6
+- SOURCE LISTING - ( vect )
+
+SN LOC      OBJ                           LLINE           SOURCE
+
+                                                 202              .global _IO_DMACR
+                                                 203              .global _IO_ICS45
+                                                 204              .global _IO_ICS67
+                                                 205              .global _IO_IPCP4
+                                                 206              .global _IO_IPCP5
+                                                 207              .global _IO_IPCP6
+                                                 208              .global _IO_IPCP7
+                                                 209              .global _IO_OCS45
+                                                 210              .global _IO_OCCP4
+                                                 211              .global _IO_OCCP5
+                                                 212              .global _IO_TCDT4
+                                                 213              .global _IO_TCCS4
+                                                 214              .global _IO_TCDT5
+                                                 215              .global _IO_TCCS5
+                                                 216              .global _IO_TCDT6
+                                                 217              .global _IO_TCCS6
+                                                 218              .global _IO_TCDT7
+                                                 219              .global _IO_TCCS7
+                                                 220              .global _IO_ROMS
+                                                 221              .global _IO_BSD0
+                                                 222              .global _IO_BSD1
+                                                 223              .global _IO_BSDC
+                                                 224              .global _IO_BSRR
+                                                 225              .global _IO_ICR
+                                                 226              .global _IO_CLK
+                                                 227              .global _IO_PLL
+                                                 228              .global _IO_OSCC1
+                                                 229              .global _IO_OSCS1
+                                                 230              .global _IO_OSCC2
+                                                 231              .global _IO_OSCS2
+                                                 232              .global _IO_PORTEN
+                                                 233              .global _IO_WT
+                                                 234              .global _IO_CSS
+                                                 235              .global _IO_CUSO
+                                                 236              .global _IO_CM
+                                                 237              .global _IO_CANPRE
+                                                 238              .global _IO_CANCKD
+                                                 239              .global _IO_LVD
+                                                 240              .global _IO_OST
+                                                 241              .global _IO_OSC
+                                                 242              .global _IO_PLL2
+                                                 243              .global _IO_IOS
+                                                 244              .global _IO_PORT2
+                                                 245              .global _IO_DMAD
+                                                 246              .global _IO_FMCS
+                                                 247              .global _IO_FMCR
+                                                 248              .global _IO_FCHCR
+                                                 249              .global _IO_FMWT
+                                                 250              .global _IO_FMWT2
+                                                 251              .global _IO_FMPS
+                                                 252              .global _IO_FMAC
+                                                 253              .global _IO_CAN0
+                                                 254              .global _IO_CAN4
+                                                 255              .global _IO_FxR_CIF
+_____________________________________________________________________________
+FR Family SOFTUNE Assembler V60L09            2011-08-21 18:19:24   Page:   7
+- SOURCE LISTING - ( vect )
+
+SN LOC      OBJ                           LLINE           SOURCE
+
+                                                 256              .global _IO_FxR_GIF1
+                                                 257              .global _IO_FxR_INT
+                                                 258              .global _IO_FxR_SUC1
+                                                 259              .global _IO_FxR_NEMC
+                                                 260              .global _IO_FxR_PRT
+                                                 261              .global _IO_FxR_MHDC
+                                                 262              .global _IO_FxR_GTU1
+                                                 263              .global _IO_FxR_SUC2
+                                                 264              .global _IO_FxR_GTU2
+                                                 265              .global _IO_FxR_NMV
+                                                 266              .global _IO_FxR_MHD
+                                                 267              .global _IO_FxR_GIF2
+                                                 268              .global _IO_FxR_WRDS
+                                                 269              .global _IO_FxR_IBF
+                                                 270              .global _IO_FxR_RDDS
+                                                 271              .global _IO_FxR_OBF
+            ==                                   272              .end
+_____________________________________________________________________________
+FR Family SOFTUNE Assembler V60L09            2011-08-21 18:19:24   Page:   8
+- SECTION LISTING - ( vect )
+
+   NO SECTION-NAME                        SIZE   ATTRIBUTES
+
+    0 INTVECT  . . . . . . . . . . . .  00000400 CONST   ABS LOCATE=00080000

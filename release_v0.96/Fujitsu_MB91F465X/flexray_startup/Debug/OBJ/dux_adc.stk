@@ -1,0 +1,7 @@
+@Y:\FlexRayDriver\Fujitsu_MB91F465X\flexray_startup\src\dux_adc.c
+# E=Extern  S=Static  I=Interrupt
+#   {Stack}    {E|S|I} {function name} [A]
+#       ->     {E|S}   {call function}
+#               ...
+#
+         8	E	_DUXAdcInit

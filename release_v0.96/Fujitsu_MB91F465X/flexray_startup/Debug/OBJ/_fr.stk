@@ -1,0 +1,5 @@
+@Y:\FlexRayDriver\Fujitsu_MB91F465X\flexray_startup\IO_MB91465X_V01L03\_fr.c
+# E=Extern  S=Static  I=Interrupt
+#   {Stack}    {E|S|I} {function name} [A]
+#       ->     {E|S}   {call function}
+#               ...

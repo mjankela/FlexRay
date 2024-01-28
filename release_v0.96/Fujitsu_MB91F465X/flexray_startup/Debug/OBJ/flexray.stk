@@ -1,0 +1,67 @@
+@Y:\FlexRayDriver\Fujitsu_MB91F465X\flexray_startup\src\flexray.c
+# E=Extern  S=Static  I=Interrupt
+#   {Stack}    {E|S|I} {function name} [A]
+#       ->     {E|S}   {call function}
+#               ...
+#
+         8	E	_DUXFXControllerName
+#
+        12	E	_DUXFXInit
+	->	S	_DUXFXConfigInit
+	->	S	_DUXFXCreateMessageRam
+	->	S	_DUXFXInterruptInit
+	->	S	_DUXFXInterruptConfig
+	->	S	_DUXFXInterruptLineConfig
+	->	S	_DUXFXConfigFix
+#
+        12	S	_DUXFXConfigInit
+#
+        12	S	_DUXFXCreateMessageRam
+#
+         8	S	_DUXFXInterruptInit
+#
+        16	S	_DUXFXInterruptConfig
+#
+        24	S	_DUXFXInterruptLineConfig
+#
+         8	S	_DUXFXConfigFix
+#
+         8	E	_DUXFXStartup
+#
+        12	E	_DUXFXReceiveControl
+#
+        16	E	_DUXFXReceiveStatus
+#
+        16	S	_DUXFXAccessReceivedData
+#
+        16	S	_DUXFXTransmitData
+#
+        12	S	_DUXFXTransmitControl
+#
+        20	E	_DUXFXGetBufferNo
+	->	S	_FlexGetWordNo
+#
+        16	S	_FlexGetWordNo
+	->	S	_FlexGetBitNo
+#
+        20	S	_FlexGetBitNo
+#
+        12	E	_DUXFXCCStatusCheck
+#
+        24	S	_findBufferForStaticSenderSlot
+	->	E	_DUXWatchDogReset
+#
+        24	S	_findBufferForDynamicSenderSlot
+	->	E	_DUXWatchDogReset
+#
+        36	E	_DUXFXSendData
+	->	S	_findBufferForStaticSenderSlot
+	->	S	_findBufferForDynamicSenderSlot
+	->	S	_DUXFXTransmitData
+	->	E	_DUXWatchDogReset
+	->	S	_DUXFXTransmitControl
+#
+        40	E	_DUXFXReceiveData
+	->	S	_DUXFXAccessReceivedData
+#
+        16	E	_DUXFXGetGlobalTime

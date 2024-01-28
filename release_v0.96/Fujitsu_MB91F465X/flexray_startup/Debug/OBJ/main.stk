@@ -1,0 +1,17 @@
+@Y:\FlexRayDriver\Fujitsu_MB91F465X\flexray_startup\src\main.c
+# E=Extern  S=Static  I=Interrupt
+#   {Stack}    {E|S|I} {function name} [A]
+#       ->     {E|S}   {call function}
+#               ...
+#
+        56	E	_main
+	->	E	_DUXPortsInit
+	->	E	_DUXUartInit
+	->	E	_DUXClearTerminal
+	->	E	_DUXPrintTerminal
+	->	E	_DUXFXControllerName
+	->	E	_DUXFXInit
+	->	E	_DUXFXStartup
+	->	E	_DUXFXCCStatusCheck
+	->	E	_DUXFXGetGlobalTime
+	->	E	_printReceivedFXBuffer

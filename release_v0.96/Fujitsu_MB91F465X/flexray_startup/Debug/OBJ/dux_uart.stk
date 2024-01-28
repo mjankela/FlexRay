@@ -1,0 +1,21 @@
+@Y:\FlexRayDriver\Fujitsu_MB91F465X\flexray_startup\src\dux_uart.c
+# E=Extern  S=Static  I=Interrupt
+#   {Stack}    {E|S|I} {function name} [A]
+#       ->     {E|S}   {call function}
+#               ...
+#
+         8	E	_DUXUartInit
+#
+         8	E	_DUXClearTerminal
+	->	S	__DUXPutString
+#
+        40	E	_DUXPrintTerminal
+	->	E	_sprintf
+	->	S	__DUXPutString
+	->	E	_vsprintf
+#
+        12	S	__DUXPutCharacter
+#
+        28	S	__DUXPutString
+	->	E	_strlen
+	->	S	__DUXPutCharacter

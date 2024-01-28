@@ -1,0 +1,720 @@
+_____________________________________________________________________________
+FR Family SOFTUNE Assembler V60L09            2011-08-19 19:52:56   Page:   1
+- ASSEMBLE INFORMATION - ( int_func )
+
+|             Command line         :  C:\Softune6\bin\fasm911s -f C:\DOKUME |
+|                                     ~1\ADMINI~1\LOKALE~1\Temp\fcca6c_2\fc |
+|                                     ca6c_3.opt -o Y:\FlexRayDriver\Fujits |
+|                                     u_MB91F465X\flexray_startup\Debug\OBJ |
+|                                     \int_func.obj Y:\FlexRayDriver\Fujits |
+|                                     u_MB91F465X\flexray_startup\Debug\LST |
+|                                     \int_func.asm                         |
+|                                                                           |
+|             Total errors         :    0                                   |
+|             Total warnings       :    0                                   |
+|                                       There were no errors.               |
+|                                                                           |
+|             Object file          :  Y:\FlexRayDriver\Fujitsu_MB91F465X\fl |
+|                                     exray_startup\Debug\OBJ\int_func.obj  |
+|             List file            :  int_func.lst                          |
+|                                                                           |
+|                                                                           |
+| NO NEST     SOURCE-FILE-NAME                     CREATE DATE/TIME         |
+| -- -------- ------------------------------------ ------------------------ |
+|  0          Y:\FlexRayDriver\Fujitsu_MB91F465X\f 2011-08-19 19:52:57      |
+|             lexray_startup\Debug\LST\int_func.as                          |
+|             m                                                             |
+| -- -------- ------------------------------------ ------------------------ |
+|                                                                           |
+|                                                                           |
+|             Current path         :  Y:\FlexRayDriver\Fujitsu_MB91F465X\fl |
+|                                     exray_startup                         |
+|             Include path         :  INC911     = C:\Softune6\LIB\911\INCL |
+|                                                  UDE\                     |
+|             Work file path       :  TMP        =                          |
+|             Default Option file  :  OPT911     = C:\Softune6\LIB\911\ (fa |
+|                                                  sm911.opt)               |
+|                                                                           |
+|                                                                           |
+| NO NEST     OPTION-FILE-NAME                     CREATE DATE/TIME         |
+| -- -------- ------------------------------------ ------------------------ |
+|  0          C:\Softune6\LIB\911\fasm911.opt      2001-11-19 21:10:00      |
+|             ------------------------------------                          |
+|             # FR Family Softune Assembler Defaul                          |
+|             t Option File                                                 |
+| -- -------- ------------------------------------ ------------------------ |
+|  1          C:\DOKUME~1\ADMINI~1\LOKALE~1\Temp\f 2011-08-19 19:52:56      |
+|             cca6c_2\fcca6c_3.opt                                          |
+|             ------------------------------------                          |
+|             "-g"                                                          |
+|             "-cpu"                                                        |
+|             "MB91F465X"                                                   |
+|             "-XUDSW"                                                      |
+|             "-lf"                                                         |
+|             "int_func.lst"                                                |
+| -- -------- ------------------------------------ ------------------------ |
+|___________________________________________________________________________|
+
+
+_____________________________________________________________________________
+FR Family SOFTUNE Assembler V60L09            2011-08-19 19:52:56   Page:   2
+- SOURCE LISTING - ( int_func )
+
+SN LOC      OBJ                           LLINE           SOURCE
+
+<Y:\FlexRayDriver\Fujitsu_MB91F465X\flexr
+ay_startup\Debug\LST\int_func.asm>        ==========
+                                                   1      //                                      F
+                                                          R Family SOFTUNE cpcom V65L06
+MODULE NAME = int_func                             2              .program        "int_func"
+                                                   3              .library        "lib911.lib"
+                                                   4              ._LANGUAGE      C_FR20, N, U, F
+                                                   5              ._FILE  "Y:\FlexRayDriver\Fujitsu
+                                                          _MB91F465X\flexray_startup\interrupt\int_
+                                                          func.c", 0
+                                                   6              ._FILE  "C:\Softune6\LIB\911\INCL
+                                                          UDE\stddef.h", 1
+                                                   7              ._FILE  "C:\Softune6\LIB\911\INCL
+                                                          UDE\string.h", 2
+                                                   8              ._FILE  "Y:\FlexRayDriver\Fujitsu
+                                                          _MB91F465X\flexray_startup\interrupt\..\h
+                                                          _file\watchdog.h", 3
+                                                   9              ._FILE  "Y:\FlexRayDriver\Fujitsu
+                                                          _MB91F465X\flexray_startup\interrupt\..\h
+                                                          _file\uart.h", 4
+                                                  10              ._FILE  "Y:\FlexRayDriver\Fujitsu
+                                                          _MB91F465X\flexray_startup\interrupt\..\h
+                                                          _file\flexray.h", 5
+                                                  11              ._FILE  "Y:\FlexRayDriver\Fujitsu
+                                                          _MB91F465X\flexray_startup\interrupt\..\h
+                                                          _file\..\h_file\platform_types.h", 6
+                                                  12              ._FILE  "Y:\FlexRayDriver\Fujitsu
+                                                          _MB91F465X\flexray_startup\interrupt\..\h
+                                                          _file\flx_regist_defines.h", 7
+                                                  13              ._FILE  "Y:\FlexRayDriver\Fujitsu
+                                                          _MB91F465X\flexray_startup\interrupt\..\I
+                                                          O_MB91465X_V01L03\mb91f465x.h", 8
+                                                  14              ._FILE  "Y:\FlexRayDriver\Fujitsu
+                                                          _MB91F465X\flexray_startup\interrupt\..\I
+                                                          O_MB91465X_V01L03\_fr.h", 9
+                                                  15              ._BTYPE 0x80000001, 1
+                                                  16              ._BTYPE 0x80000002, 1
+                                                  17              ._BTYPE 0x80000003, 2
+                                                  18              ._BTYPE 0x80000004, 2
+                                                  19              ._BTYPE 0x80000005, 4
+                                                  20              ._BTYPE 0x80000006, 4
+                                                  21              ._BTYPE 0x80000007, 4
+                                                  22              ._BTYPE 0x80000008, 4
+                                                  23              ._BTYPE 0x80000009, 1
+                                                  24              ._BTYPE 0x8000000a, 2
+                                                  25              ._BTYPE 0x8000000b, 4
+                                                  26              ._BTYPE 0x8000000c, 8
+                                                  27              ._BTYPE 0x8000000d, 8
+                                                  28              ._BTYPE 0x8000000e, 1
+                                                  29              ._BTYPE 0x8000000f, 0
+                                                  30              ._BTYPE 0x80000010, 8
+                                                  31              ._BTYPE 0x80000011, 8
+                                                  32              ._SYMBOL        "uint16", Y, 0x80
+                                                          000004
+_____________________________________________________________________________
+FR Family SOFTUNE Assembler V60L09            2011-08-19 19:52:56   Page:   3
+- SOURCE LISTING - ( int_func )
+
+SN LOC      OBJ                           LLINE           SOURCE
+
+                                                  33              ._SYMBOL        "uint8", Y, 0x800
+                                                          00002
+                                                  34              ._SYMBOL        "uint32", Y, 0x80
+                                                          000008
+                                                  35              .global _IO_PDR14
+                                                  36              .global _IO_PDR15
+                                                  37              .global _IO_PDR16
+                                                  38              .global _IO_PDR17
+                                                  39              .global _IO_PDR18
+                                                  40              .global _IO_PDR19
+                                                  41              .global _IO_PDR22
+                                                  42              .global _IO_PDR23
+                                                  43              .global _IO_PDR24
+                                                  44              .global _IO_PDR27
+                                                  45              .global _IO_PDR28
+                                                  46              .global _IO_PDR29
+                                                  47              .global _IO_PDR31
+                                                  48              .global _IO_EIRR0
+                                                  49              .global _IO_ENIR0
+                                                  50              .global _IO_ELVR0
+                                                  51              .global _IO_EIRR1
+                                                  52              .global _IO_ENIR1
+                                                  53              .global _IO_ELVR1
+                                                  54              .global _IO_DICR
+                                                  55              .global _IO_HRCL
+                                                  56              .global _IO_RBSYNC
+                                                  57              .global _IO_SCR04
+                                                  58              .global _IO_SMR04
+                                                  59              .global _IO_SSR04
+                                                  60              .global _IO_RDR04
+                                                  61              .global _IO_ESCR04
+                                                  62              .global _IO_ECCR04
+                                                  63              .global _IO_FSR04
+                                                  64              .global _IO_FCR04
+                                                  65              .global _IO_SCR06
+                                                  66              .global _IO_SMR06
+                                                  67              .global _IO_SSR06
+                                                  68              .global _IO_RDR06
+                                                  69              .global _IO_ESCR06
+                                                  70              .global _IO_ECCR06
+                                                  71              .global _IO_FSR06
+                                                  72              .global _IO_FCR06
+                                                  73              .global _IO_SCR07
+                                                  74              .global _IO_SMR07
+                                                  75              .global _IO_SSR07
+                                                  76              .global _IO_RDR07
+                                                  77              .global _IO_ESCR07
+                                                  78              .global _IO_ECCR07
+                                                  79              .global _IO_FSR07
+                                                  80              .global _IO_FCR07
+                                                  81              .global _IO_BGR04
+                                                  82              .global _IO_BGR06
+                                                  83              .global _IO_BGR07
+                                                  84              .global _IO_IIC0
+_____________________________________________________________________________
+FR Family SOFTUNE Assembler V60L09            2011-08-19 19:52:56   Page:   4
+- SOURCE LISTING - ( int_func )
+
+SN LOC      OBJ                           LLINE           SOURCE
+
+                                                  85              .global _IO_GCN10
+                                                  86              .global _IO_GCN20
+                                                  87              .global _IO_GCN11
+                                                  88              .global _IO_GCN21
+                                                  89              .global _IO_GCN12
+                                                  90              .global _IO_GCN22
+                                                  91              .global _IO_PTMR00
+                                                  92              .global _IO_PCSR00
+                                                  93              .global _IO_PDUT00
+                                                  94              .global _IO_PCN00
+                                                  95              .global _IO_PTMR01
+                                                  96              .global _IO_PCSR01
+                                                  97              .global _IO_PDUT01
+                                                  98              .global _IO_PCN01
+                                                  99              .global _IO_PTMR02
+                                                 100              .global _IO_PCSR02
+                                                 101              .global _IO_PDUT02
+                                                 102              .global _IO_PCN02
+                                                 103              .global _IO_PTMR03
+                                                 104              .global _IO_PCSR03
+                                                 105              .global _IO_PDUT03
+                                                 106              .global _IO_PCN03
+                                                 107              .global _IO_PTMR04
+                                                 108              .global _IO_PCSR04
+                                                 109              .global _IO_PDUT04
+                                                 110              .global _IO_PCN04
+                                                 111              .global _IO_PTMR05
+                                                 112              .global _IO_PCSR05
+                                                 113              .global _IO_PDUT05
+                                                 114              .global _IO_PCN05
+                                                 115              .global _IO_PTMR06
+                                                 116              .global _IO_PCSR06
+                                                 117              .global _IO_PDUT06
+                                                 118              .global _IO_PCN06
+                                                 119              .global _IO_PTMR07
+                                                 120              .global _IO_PCSR07
+                                                 121              .global _IO_PDUT07
+                                                 122              .global _IO_PCN07
+                                                 123              .global _IO_PTMR08
+                                                 124              .global _IO_PCSR08
+                                                 125              .global _IO_PDUT08
+                                                 126              .global _IO_PCN08
+                                                 127              .global _IO_PTMR09
+                                                 128              .global _IO_PCSR09
+                                                 129              .global _IO_PDUT09
+                                                 130              .global _IO_PCN09
+                                                 131              .global _IO_PTMR10
+                                                 132              .global _IO_PCSR10
+                                                 133              .global _IO_PDUT10
+                                                 134              .global _IO_PCN10
+                                                 135              .global _IO_PTMR11
+                                                 136              .global _IO_PCSR11
+                                                 137              .global _IO_PDUT11
+                                                 138              .global _IO_PCN11
+_____________________________________________________________________________
+FR Family SOFTUNE Assembler V60L09            2011-08-19 19:52:56   Page:   5
+- SOURCE LISTING - ( int_func )
+
+SN LOC      OBJ                           LLINE           SOURCE
+
+                                                 139              .global _IO_ICS01
+                                                 140              .global _IO_ICS23
+                                                 141              .global _IO_IPCP0
+                                                 142              .global _IO_IPCP1
+                                                 143              .global _IO_IPCP2
+                                                 144              .global _IO_IPCP3
+                                                 145              .global _IO_OCS01
+                                                 146              .global _IO_OCS23
+                                                 147              .global _IO_OCCP0
+                                                 148              .global _IO_OCCP1
+                                                 149              .global _IO_OCCP2
+                                                 150              .global _IO_OCCP3
+                                                 151              .global _IO_AD
+                                                 152              .global _IO_TMRLR0
+                                                 153              .global _IO_TMR0
+                                                 154              .global _IO_TMCSR0
+                                                 155              .global _IO_TMRLR1
+                                                 156              .global _IO_TMR1
+                                                 157              .global _IO_TMCSR1
+                                                 158              .global _IO_TMRLR2
+                                                 159              .global _IO_TMR2
+                                                 160              .global _IO_TMCSR2
+                                                 161              .global _IO_TMRLR3
+                                                 162              .global _IO_TMR3
+                                                 163              .global _IO_TMCSR3
+                                                 164              .global _IO_TMRLR4
+                                                 165              .global _IO_TMR4
+                                                 166              .global _IO_TMCSR4
+                                                 167              .global _IO_TMRLR5
+                                                 168              .global _IO_TMR5
+                                                 169              .global _IO_TMCSR5
+                                                 170              .global _IO_TMRLR6
+                                                 171              .global _IO_TMR6
+                                                 172              .global _IO_TMCSR6
+                                                 173              .global _IO_TMRLR7
+                                                 174              .global _IO_TMR7
+                                                 175              .global _IO_TMCSR7
+                                                 176              .global _IO_TCDT0
+                                                 177              .global _IO_TCCS0
+                                                 178              .global _IO_TCDT1
+                                                 179              .global _IO_TCCS1
+                                                 180              .global _IO_TCDT2
+                                                 181              .global _IO_TCCS2
+                                                 182              .global _IO_TCDT3
+                                                 183              .global _IO_TCCS3
+                                                 184              .global _IO_DMACA0
+                                                 185              .global _IO_DMACB0
+                                                 186              .global _IO_DMACA1
+                                                 187              .global _IO_DMACB1
+                                                 188              .global _IO_DMACA2
+                                                 189              .global _IO_DMACB2
+                                                 190              .global _IO_DMACA3
+                                                 191              .global _IO_DMACB3
+                                                 192              .global _IO_DMACA4
+_____________________________________________________________________________
+FR Family SOFTUNE Assembler V60L09            2011-08-19 19:52:56   Page:   6
+- SOURCE LISTING - ( int_func )
+
+SN LOC      OBJ                           LLINE           SOURCE
+
+                                                 193              .global _IO_DMACB4
+                                                 194              .global _IO_DMACR
+                                                 195              .global _IO_ICS45
+                                                 196              .global _IO_ICS67
+                                                 197              .global _IO_IPCP4
+                                                 198              .global _IO_IPCP5
+                                                 199              .global _IO_IPCP6
+                                                 200              .global _IO_IPCP7
+                                                 201              .global _IO_OCS45
+                                                 202              .global _IO_OCCP4
+                                                 203              .global _IO_OCCP5
+                                                 204              .global _IO_TCDT4
+                                                 205              .global _IO_TCCS4
+                                                 206              .global _IO_TCDT5
+                                                 207              .global _IO_TCCS5
+                                                 208              .global _IO_TCDT6
+                                                 209              .global _IO_TCCS6
+                                                 210              .global _IO_TCDT7
+                                                 211              .global _IO_TCCS7
+                                                 212              .global _IO_ROMS
+                                                 213              .global _IO_BSD0
+                                                 214              .global _IO_BSD1
+                                                 215              .global _IO_BSDC
+                                                 216              .global _IO_BSRR
+                                                 217              .global _IO_ICR
+                                                 218              .global _IO_CLK
+                                                 219              .global _IO_PLL
+                                                 220              .global _IO_OSCC1
+                                                 221              .global _IO_OSCS1
+                                                 222              .global _IO_OSCC2
+                                                 223              .global _IO_OSCS2
+                                                 224              .global _IO_PORTEN
+                                                 225              .global _IO_WT
+                                                 226              .global _IO_CSS
+                                                 227              .global _IO_CUSO
+                                                 228              .global _IO_CM
+                                                 229              .global _IO_CANPRE
+                                                 230              .global _IO_CANCKD
+                                                 231              .global _IO_LVD
+                                                 232              .global _IO_OST
+                                                 233              .global _IO_OSC
+                                                 234              .global _IO_PLL2
+                                                 235              .global _IO_IOS
+                                                 236              .global _IO_PORT2
+                                                 237              .global _IO_DMAD
+                                                 238              .global _IO_FMCS
+                                                 239              .global _IO_FMCR
+                                                 240              .global _IO_FCHCR
+                                                 241              .global _IO_FMWT
+                                                 242              .global _IO_FMWT2
+                                                 243              .global _IO_FMPS
+                                                 244              .global _IO_FMAC
+                                                 245              .global _IO_CAN0
+                                                 246              .global _IO_CAN4
+_____________________________________________________________________________
+FR Family SOFTUNE Assembler V60L09            2011-08-19 19:52:56   Page:   7
+- SOURCE LISTING - ( int_func )
+
+SN LOC      OBJ                           LLINE           SOURCE
+
+                                                 247              .global _IO_FxR_CIF
+                                                 248              .global _IO_FxR_GIF1
+                                                 249              .global _IO_FxR_INT
+                                                 250              .global _IO_FxR_SUC1
+                                                 251              .global _IO_FxR_NEMC
+                                                 252              .global _IO_FxR_PRT
+                                                 253              .global _IO_FxR_MHDC
+                                                 254              .global _IO_FxR_GTU1
+                                                 255              .global _IO_FxR_SUC2
+                                                 256              .global _IO_FxR_GTU2
+                                                 257              .global _IO_FxR_NMV
+                                                 258              .global _IO_FxR_MHD
+                                                 259              .global _IO_FxR_GIF2
+                                                 260              .global _IO_FxR_WRDS
+                                                 261              .global _IO_FxR_IBF
+                                                 262              .global _IO_FxR_RDDS
+                                                 263              .global _IO_FxR_OBF
+IN 00000000 -----------<INIT>------------        264              .section        INIT, DATA, align
+                                                          =4
+IN 00000000 - 00000000 [0] < [1]                 265              .align  1
+IN 00000000                                      266      _sendFrameBuffer:
+IN 00000000 20                                   267              .byte   32
+IN 00000001 20                                   268              .byte   32
+IN 00000002 41                                   269              .byte   65
+IN 00000003 42                                   270              .byte   66
+IN 00000004 43                                   271              .byte   67
+IN 00000005 44                                   272              .byte   68
+IN 00000006 45                                   273              .byte   69
+IN 00000007 46                                   274              .byte   70
+IN 00000008 00                                   275              .byte   0
+                                                 276              .global _DUXWatchDogReset
+                                                 277              .global _DUXFXSendData
+                                                 278              .global _DUXFXReceiveStatus
+                                                 279              .global _DUXFXReceiveControl
+                                                 280              .global _DUXFXGetBufferNo
+                                                 281              .global ___wait_nop
+CO 00000000 -----------<CODE>------------        282              .section        CODE, CODE, align
+                                                          =2
+                                                 283              .global _printReceivedFXBuffer
+                                                 284              ._SYMBOL        "printReceivedFXB
+                                                          uffer", F, 0x8000000f, E, "_printReceived
+                                                          FXBuffer", F
+                                                 285              ._FPARAM        S, 0, F
+                                                 286              ._FPARAM        E
+                                                 287              ._CONFIG        S, F, 1
+                                                 288              ._LINE  0, 34
+CO 00000000                                      289      _printReceivedFXBuffer:
+CO 00000000                                      290      L_20:
+CO 00000000 1781                                 291              ST      RP,@-SP
+CO 00000002 0F01                                 292              ENTER   #4
+                                                 293      ;-------end_of_no_optimize_block
+                                                 294              ._FUNCTION      "fp", "fp", 16
+                                                 295              ._CONFIG        S, B
+CO 00000004                                      296      L_22:                           // Pred:
+_____________________________________________________________________________
+FR Family SOFTUNE Assembler V60L09            2011-08-19 19:52:56   Page:   8
+- SOURCE LISTING - ( int_func )
+
+SN LOC      OBJ                           LLINE           SOURCE
+
+                                                          L_20
+                                                 297              ._CONFIG        E
+                                                 298              ._LINE  0, 56
+CO 00000004 9F90                                 299              LEAVE
+CO 00000006 0781                                 300              LD      @SP+,RP
+CO 00000008 9720                                 301              RET
+                                                 302              ._CONFIG        E
+                                                 303              .global _ADC_int
+                                                 304              ._SYMBOL        "ADC_int", F, 0x8
+                                                          000000f, E, "_ADC_int", I
+                                                 305              ._FPARAM        S, 0, F
+                                                 306              ._FPARAM        E
+                                                 307              ._CONFIG        S, F, 1
+                                                 308              ._LINE  0, 59
+CO 0000000A                                      309      _ADC_int:
+CO 0000000A                                      310      L_23:
+CO 0000000A 8F0C8EFF                             311              STM     (R0,R1,R2,R3,R4,R5,R6,R7,
+                                                          R12,R13)
+CO 0000000E 1784                                 312              ST      MDH,@-SP
+CO 00000010 1785                                 313              ST      MDL,@-SP
+CO 00000012 1781                                 314              ST      RP,@-SP
+CO 00000014 0F02                                 315              ENTER   #8
+                                                 316      ;-------end_of_no_optimize_block
+                                                 317              ._FUNCTION      "fp", "fp", 24
+                                                 318              ._CONFIG        S, B
+                                                 319              ._SYMBOL        "ad_data9", V, 0x
+                                                          80000004, A, -4
+                                                 320              ._SYMBOL        "led", V, 0x80000
+                                                          002, A, -2
+                                                 321              ._SYMBOL        "ad_ch", V, 0x800
+                                                          00002, A, -1
+CO 00000016                                      322      L_24:                           // Pred:
+                                                          L_23
+                                                 323              ._LINE  0, 60
+                                                 324              ._LINE  0, 64
+                                                 325      ;-------volatile_access
+CO 00000016 9FA0                                 326              NOP
+                                                 327      ;-------end_of_no_optimize_block
+                                                 328              ._LINE  0, 65
+                                                 329      ;-------volatile_access
+CO 00000018 9FA0                                 330              NOP
+                                                 331      ;-------end_of_no_optimize_block
+                                                 332              ._LINE  0, 66
+                                                 333      ;-------volatile_access
+CO 0000001A 9FA0                                 334              NOP
+                                                 335      ;-------end_of_no_optimize_block
+                                                 336              ._LINE  0, 67
+                                                 337      ;-------volatile_access
+CO 0000001C 9FA0                                 338              NOP
+                                                 339      ;-------end_of_no_optimize_block
+                                                 340              ._LINE  0, 68
+                                                 341      ;-------volatile_access
+CO 0000001E 9FA0                                 342              NOP
+                                                 343      ;-------end_of_no_optimize_block
+_____________________________________________________________________________
+FR Family SOFTUNE Assembler V60L09            2011-08-19 19:52:56   Page:   9
+- SOURCE LISTING - ( int_func )
+
+SN LOC      OBJ                           LLINE           SOURCE
+
+                                                 344              ._LINE  0, 70
+                                                 345   x          CALL20  _DUXWatchDogReset,R12
+CO 00000020 9B0C0000                  I                O  "LDI:20"
+CO 00000024 971C                                       O  "CALL"
+                                                 346              ._LINE  0, 71
+CO 00000026 9B000000                  I          347              LDI:20  #_IO_AD+5,R0
+CO 0000002A 0601                                 348              LDUB    @R0,R1  ; _IO_AD
+CO 0000002C C1F0                                 349              LDI     #31,R0
+CO 0000002E 8201                                 350              AND     R0,R1
+CO 00000030 7FF1                                 351              STB     R1,@(FP,-1)     ; _ad_ch
+                                                 352              ._LINE  0, 73
+CO 00000032 6FF0                                 353              LDUB    @(FP,-1),R0     ; _ad_ch
+CO 00000034 A890                                 354              CMP     #9,R0
+                                                 355   x          BNE20   L_26,R12
+CO 00000036 E30D                                       O  "BNE"
+CO 00000038                                      356      L_25:                           // Pred:
+                                                          L_24
+                                                 357              ._LINE  0, 73
+                                                 358              ._LINE  0, 74
+                                                 359      ;-------volatile_access
+CO 00000038 9FA0                                 360              NOP
+                                                 361      ;-------end_of_no_optimize_block
+                                                 362              ._LINE  0, 75
+                                                 363      ;-------volatile_access
+CO 0000003A 9FA0                                 364              NOP
+                                                 365      ;-------end_of_no_optimize_block
+                                                 366              ._LINE  0, 76
+CO 0000003C C000                                 367              LDI     #0,R0
+CO 0000003E 5FE0                                 368              STH     R0,@(FP,-4)     ; _ad_dat
+                                                          a9
+                                                 369              ._LINE  0, 77
+CO 00000040 9B000000                  I          370              LDI:20  #_IO_AD+6,R0
+CO 00000044 0500                                 371              LDUH    @R0,R0  ; _IO_AD
+CO 00000046 5FE0                                 372              STH     R0,@(FP,-4)     ; _ad_dat
+                                                          a9
+                                                 373              ._LINE  0, 78
+CO 00000048 4FE0                                 374              LDUH    @(FP,-4),R0     ; _ad_dat
+                                                          a9
+CO 0000004A 7FE0                                 375              STB     R0,@(FP,-2)     ; _led
+                                                 376              ._LINE  0, 79
+CO 0000004C 6FED                                 377              LDUB    @(FP,-2),R13    ; _led
+CO 0000004E 1A00                      I          378              DMOVB   R13,@_IO_PDR14  ; _IO_PDR
+                                                          14
+                                                 379              ._LINE  0, 80
+                                                 380   x          BRA20   L_27,R12
+CO 00000050 E015                                       O  "BRA"
+CO 00000052                                      381      L_26:                           // Pred:
+                                                          L_24
+                                                 382              ._LINE  0, 81
+CO 00000052 6FF0                                 383              LDUB    @(FP,-1),R0     ; _ad_ch
+CO 00000054 A8A0                                 384              CMP     #10,R0
+                                                 385   x          BNE20   L_29,R12
+CO 00000056 E30F                                       O  "BNE"
+CO 00000058                                      386      L_28:                           // Pred:
+_____________________________________________________________________________
+FR Family SOFTUNE Assembler V60L09            2011-08-19 19:52:56   Page:  10
+- SOURCE LISTING - ( int_func )
+
+SN LOC      OBJ                           LLINE           SOURCE
+
+                                                          L_26
+                                                 387              ._LINE  0, 81
+                                                 388              ._LINE  0, 82
+                                                 389      ;-------volatile_access
+CO 00000058 9FA0                                 390              NOP
+                                                 391      ;-------end_of_no_optimize_block
+                                                 392              ._LINE  0, 83
+                                                 393      ;-------volatile_access
+CO 0000005A 9FA0                                 394              NOP
+                                                 395      ;-------end_of_no_optimize_block
+                                                 396              ._LINE  0, 85
+CO 0000005C 9B000000                  I          397              LDI:20  #_IO_AD+6,R0
+CO 00000060 0500                                 398              LDUH    @R0,R0  ; _IO_AD
+CO 00000062 9B060000                  R          399              LDI:20  #_sendFrameBuffer,R6
+CO 00000066 1660                                 400              STB     R0,@R6  ; _sendFrameBuffe
+                                                          r
+                                                 401              ._LINE  0, 86
+CO 00000068 C014                                 402              LDI     #1,R4
+CO 0000006A C025                                 403              LDI     #2,R5
+CO 0000006C C097                                 404              LDI     #9,R7
+                                                 405   x          CALL20  _DUXFXSendData,R12
+CO 0000006E 9B0C0000                  I                O  "LDI:20"
+CO 00000072 971C                                       O  "CALL"
+                                                 406              ._LINE  0, 88
+                                                 407   x          BRA20   L_27,R12
+CO 00000074 E003                                       O  "BRA"
+CO 00000076                                      408      L_29:                           // Pred:
+                                                          L_26
+                                                 409              ._LINE  0, 89
+                                                 410              ._LINE  0, 90
+                                                 411   x          CALL20  _DUXWatchDogReset,R12
+CO 00000076 9B0C0000                  I                O  "LDI:20"
+CO 0000007A 971C                                       O  "CALL"
+                                                 412              ._LINE  0, 91
+CO 0000007C                                      413      L_27:                           // Pred:
+                                                          L_29 L_28 L_25
+                                                 414              ._LINE  0, 93
+CO 0000007C 9B000000                  I          415              LDI:20  #_IO_AD+4,R0
+                                                 416   x          BAND    #0xBF,@R0
+CO 00000080 81B0                                       O  "BANDH"
+                                                 417              ._LINE  0, 94
+                                                 418      ;-------volatile_access
+CO 00000082 9FA0                                 419              NOP
+                                                 420      ;-------end_of_no_optimize_block
+                                                 421              ._LINE  0, 95
+                                                 422      ;-------volatile_access
+CO 00000084 9FA0                                 423              NOP
+                                                 424      ;-------end_of_no_optimize_block
+                                                 425              ._LINE  0, 96
+                                                 426   x          BOR     #0x2,@R0
+CO 00000086 9020                                       O  "BORL"
+CO 00000088                                      427      L_31:                           // Pred:
+                                                          L_27
+                                                 428              ._LINE  0, 96
+_____________________________________________________________________________
+FR Family SOFTUNE Assembler V60L09            2011-08-19 19:52:56   Page:  11
+- SOURCE LISTING - ( int_func )
+
+SN LOC      OBJ                           LLINE           SOURCE
+
+                                                 429              ._CONFIG        E
+                                                 430              ._LINE  0, 97
+CO 00000088 9F90                                 431              LEAVE
+CO 0000008A 0781                                 432              LD      @SP+,RP
+CO 0000008C 0785                                 433              LD      @SP+,MDL
+CO 0000008E 0784                                 434              LD      @SP+,MDH
+CO 00000090 8CFF8D30                             435              LDM     (R0,R1,R2,R3,R4,R5,R6,R7,
+                                                          R12,R13)
+CO 00000094 9730                                 436              RETI
+                                                 437              ._CONFIG        E
+                                                 438              .global _iFlxStatusInterrupt
+                                                 439              ._SYMBOL        "iFlxStatusInterr
+                                                          upt", F, 0x8000000f, E, "_iFlxStatusInter
+                                                          rupt", I
+                                                 440              ._FPARAM        S, 0, F
+                                                 441              ._FPARAM        E
+                                                 442              ._CONFIG        S, F, 1
+                                                 443              ._LINE  0, 99
+CO 00000096                                      444      _iFlxStatusInterrupt:
+CO 00000096                                      445      L_32:
+CO 00000096 8F0C8EFF                             446              STM     (R0,R1,R2,R3,R4,R5,R6,R7,
+                                                          R12,R13)
+CO 0000009A 1784                                 447              ST      MDH,@-SP
+CO 0000009C 1785                                 448              ST      MDL,@-SP
+CO 0000009E 1781                                 449              ST      RP,@-SP
+CO 000000A0 0F02                                 450              ENTER   #8
+                                                 451      ;-------end_of_no_optimize_block
+                                                 452              ._FUNCTION      "fp", "fp", 24
+                                                 453              ._CONFIG        S, B
+                                                 454              ._SYMBOL        "rcv_err", V, 0x8
+                                                          0000008, A, -4
+CO 000000A2                                      455      L_33:                           // Pred:
+                                                          L_32
+                                                 456              ._LINE  0, 100
+                                                 457              ._LINE  0, 100
+CO 000000A2 C000                                 458              LDI     #0,R0
+CO 000000A4 3FF0                                 459              ST      R0,@(FP,-4)     ; _rcv_er
+                                                          r
+                                                 460              ._LINE  0, 102
+                                                 461      ;-------volatile_access
+CO 000000A6 9FA0                                 462              NOP
+                                                 463      ;-------end_of_no_optimize_block
+                                                 464              ._LINE  0, 103
+                                                 465      ;-------volatile_access
+CO 000000A8 9FA0                                 466              NOP
+                                                 467      ;-------end_of_no_optimize_block
+                                                 468              ._LINE  0, 105
+                                                 469   x          CALL20  _DUXWatchDogReset,R12
+CO 000000AA 9B0C0000                  I                O  "LDI:20"
+CO 000000AE 971C                                       O  "CALL"
+                                                 470              ._LINE  0, 106
+                                                 471      ;-------volatile_access
+CO 000000B0 9FA0                                 472              NOP
+                                                 473      ;-------end_of_no_optimize_block
+_____________________________________________________________________________
+FR Family SOFTUNE Assembler V60L09            2011-08-19 19:52:56   Page:  12
+- SOURCE LISTING - ( int_func )
+
+SN LOC      OBJ                           LLINE           SOURCE
+
+                                                 474              ._LINE  0, 107
+CO 000000B2 9B020000                  I          475              LDI:20  #_IO_FxR_INT+4,R2
+CO 000000B6 0420                                 476              LD      @R2,R0  ; _IO_FxR_INT
+CO 000000B8 C101                                 477              LDI     #16,R1
+CO 000000BA 8210                                 478              AND     R1,R0
+CO 000000BC AA10                                 479              CMP     R1,R0
+                                                 480   x          BNE20   L_36,R12
+CO 000000BE E30D                                       O  "BNE"
+CO 000000C0                                      481      L_34:                           // Pred:
+                                                          L_33
+                                                 482              ._LINE  0, 108
+                                                 483              ._LINE  0, 110
+CO 000000C0 1421                                 484              ST      R1,@R2  ; _IO_FxR_INT
+                                                 485              ._LINE  0, 111
+                                                 486   x          CALL20  _DUXFXGetBufferNo,R12
+CO 000000C2 9B0C0000                  I                O  "LDI:20"
+CO 000000C6 971C                                       O  "CALL"
+                                                 487   x          CALL20  _DUXFXReceiveControl,R12
+CO 000000C8 9B0C0000                  I                O  "LDI:20"
+CO 000000CC 971C                                       O  "CALL"
+                                                 488              ._LINE  0, 112
+CO 000000CE 8BE4                                 489              MOV     FP,R4
+CO 000000D0 A1C4                                 490              ADDN    #-4,R4
+                                                 491   x          CALL20  _DUXFXReceiveStatus,R12
+CO 000000D2 9B0C0000                  I                O  "LDI:20"
+CO 000000D6 971C                                       O  "CALL"
+                                                 492              ._LINE  0, 114
+                                                 493      ;-------volatile_access
+CO 000000D8 9FA0                                 494              NOP
+                                                 495      ;-------end_of_no_optimize_block
+                                                 496              ._LINE  0, 123
+CO 000000DA                                      497      L_36:                           // Pred:
+                                                          L_34 L_33
+                                                 498              ._LINE  0, 124
+                                                 499              ._CONFIG        E
+                                                 500              ._LINE  0, 125
+CO 000000DA 9F90                                 501              LEAVE
+CO 000000DC 0781                                 502              LD      @SP+,RP
+CO 000000DE 0785                                 503              LD      @SP+,MDL
+CO 000000E0 0784                                 504              LD      @SP+,MDH
+CO 000000E2 8CFF8D30                             505              LDM     (R0,R1,R2,R3,R4,R5,R6,R7,
+                                                          R12,R13)
+CO 000000E6 9730                                 506              RETI
+                                                 507              ._CONFIG        E
+                                                 508              ._SYMBOL        "sendFrameBuffer"
+                                                          , V, 0x80000002, S, "_sendFrameBuffer"
+                                                 509              ._ARRAY 1, 1, 8, 0
+            ==                                   510              .end
+_____________________________________________________________________________
+FR Family SOFTUNE Assembler V60L09            2011-08-19 19:52:56   Page:  13
+- SECTION LISTING - ( int_func )
+
+   NO SECTION-NAME                        SIZE   ATTRIBUTES
+
+    0 INIT . . . . . . . . . . . . . .  00000009 DATA    REL ALIGN=4
+    1 CODE . . . . . . . . . . . . . .  000000E8 CODE    REL ALIGN=2

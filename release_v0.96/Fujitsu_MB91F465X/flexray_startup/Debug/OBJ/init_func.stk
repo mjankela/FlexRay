@@ -1,0 +1,9 @@
+@Y:\FlexRayDriver\Fujitsu_MB91F465X\flexray_startup\initial\init_func.c
+# E=Extern  S=Static  I=Interrupt
+#   {Stack}    {E|S|I} {function name} [A]
+#       ->     {E|S}   {call function}
+#               ...
+#
+         8	E	_init_port
+#
+         8	E	_init_ADC
